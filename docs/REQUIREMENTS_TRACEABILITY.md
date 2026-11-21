@@ -26,3 +26,8 @@
 | Graded retrieval and personalization | apps/api/app/retrieval/search.py, apps/api/app/ranking/scoring.py, scripts/graded_eval.py | tests/test_core.py; docs/graded-results.json contains 100 queries and four executed strategies | Compare stored graded runs in Evaluation lab. |
 | SQL filtering and changing inventory | apps/api/app/ingestion/sources.py, apps/api/app/ingestion/importer.py | tests/test_index_refresh.py includes 603-candidate starvation, pagination, expiry, source validation and duplicate upserts | Run scripts/scale_seed.py twice, then refresh a complete local snapshot. |
 | Profile extraction and application integration | apps/api/app/services/resume.py, apps/web/features/match-dialog.tsx | tests/test_resume.py, apps/web/e2e/discovery.spec.ts | Upload a text PDF, confirm extracted details, search and inspect a match. Hosted PDF extraction unverified. |
+
+### Negation and fusion follow-up
+- Typed inclusion/exclusion lives in apps/api/app/schemas/domain.py and apps/api/app/memory/constraints.py. Search applies exclusions before candidate selection in apps/api/app/retrieval/search.py and reports uncertainty in apps/api/app/retrieval/eligibility.py. tests/test_core.py and tests/test_conversations.py verify language, contradiction, preservation and clearing. The browser scenario also verifies clarification and reset.
+- Run scripts/graded_eval.py --fusion for lexical-vs-semantic diagnostics. docs/fusion-results.json contains the 24-query comparisons and evidence for the one query where fusion changed the ranking.
+- scripts/hosted_smoke.py probes a real, opted-in search, follow-up and grounded explanation when configured. Hosted execution remains pending credentials.

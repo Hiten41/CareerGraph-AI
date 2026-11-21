@@ -1,0 +1,31 @@
+name: Clean Docker Compose
+on:
+  workflow_dispatch:
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - name: Start from an empty database
+        run: |
+          cp .env.example .env
+          docker compose up --build --wait --wait-timeout 180
+          curl --fail --show-error --silent http://localhost:3000/api/v1/health/ready
+          docker compose exec -T api alembic -c apps/api/alembic.ini current
+          docker compose exec -T api python scripts/seed.py
+          docker compose exec -T api python scripts/evaluate.py
+      - name: Exercise the containerized application
+        working-directory: apps/web
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npx playwright test
+      - name: Show container diagnostics
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Stop this runner's disposable stack
+        if: always()
+        run: docker compose down --volumes

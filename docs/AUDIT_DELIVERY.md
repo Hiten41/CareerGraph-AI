@@ -66,3 +66,7 @@ Compared with the earlier ranking-snapshot archive, changed or added files are l
 - tests/test_index_refresh.py
 - tests/test_provider.py
 - tests/test_resume.py
+
+## Follow-up release
+Changed files for this revision include apps/api/app/{agents/orchestrator.py,agents/tools.py,memory/constraints.py,retrieval/eligibility.py,retrieval/search.py,schemas/domain.py}, apps/web/{app/layout.tsx,e2e/discovery.spec.ts}, packages/contracts/{openapi.json,api.d.ts}, scripts/{graded_eval.py,hosted_smoke.py,fixtures/fusion_cases.jsonl}, tests/{test_core.py,test_conversations.py}, docs/{EVALUATION.md,DEPLOYMENT.md,REQUIREMENTS_TRACEABILITY.md,RESUME_BULLETS.md,fusion-results.json}, README.md, .gitignore, infra/api.Dockerfile and .github/workflows/compose-smoke.yml.
+Locally, 36 Python tests passed with the database and embedding integrations enabled. The Edge browser scenario passed with contradiction, clear-filters and stale-result coverage. Ruff, mypy, Python compilation, ESLint, TypeScript, Vitest and the Next.js production build passed. The private GitHub repository credits Hiten Arora. Follow the GitHub workflows for remote status. Hosted provider calls require separately configured credentials.

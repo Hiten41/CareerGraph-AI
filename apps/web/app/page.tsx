@@ -809,7 +809,9 @@ export default function Home() {
         </main>
         <footer>
           CareerGraph AI{" "}
-          <span>Thoughtful discovery. Transparent recommendations.</span>
+          <span>
+            Built by <a href="https://github.com/Hiten41">Hiten Arora</a>
+          </span>
         </footer>
       </div>
       <MatchDialog {...{ selected, dialog }} />
