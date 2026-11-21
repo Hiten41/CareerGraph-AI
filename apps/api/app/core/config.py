@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     llm_base_url: str = "https://api.openai.com/v1"
     llm_model: str = ""
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    mini_lm_assets: str | None = None
     db_pool_size: int = 5
     db_max_overflow: int = 10
     upload_limit: int = 5_000_000

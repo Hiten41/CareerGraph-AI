@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: careergraph-ai-hiten
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./infra/render.Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/v1/health/ready
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: careergraph-ai-hiten-db
+          property: connectionString
+databases:
+  - name: careergraph-ai-hiten-db
+    plan: free
+    region: oregon
+    postgresMajorVersion: "16"
+    ipAllowList: []
