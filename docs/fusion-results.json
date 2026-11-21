@@ -1,0 +1,2979 @@
+{
+  "keyword": {
+    "metadata": {
+      "dataset": "fusion-cases-v1",
+      "sample_count": 24,
+      "intent_clusters": 24,
+      "index_size": 1052,
+      "strategy": "keyword",
+      "model": "all-MiniLM-L6-v2",
+      "ranking": "cosine-rrf-bounded-v2",
+      "rrf_k": 60,
+      "lexical": "strict-then-any-v1"
+    },
+    "metrics": {
+      "mrr": 0.875,
+      "recall_5": 0.7916666666666666,
+      "precision_5": 0.18333333333333335,
+      "ndcg_5": 0.8370545921187204,
+      "recall_10": 0.7916666666666666,
+      "precision_10": 0.09166666666666667,
+      "ndcg_10": 0.8370545921187204,
+      "p50_ms": 7.406949996948242,
+      "p95_ms": 21.294374997523846,
+      "constraint_violations": 0,
+      "returned": 33,
+      "violation_rate": 0.0
+    },
+    "by_category": {
+      "exact": 0.9724398042376524,
+      "abbreviation": 1.0,
+      "rare-term": 1.0,
+      "typo": 0.44578399090347215,
+      "paraphrase": 0.4793298531782393,
+      "exclusion": 1.0,
+      "currency-period": 1.0,
+      "employment": 1.0,
+      "combined": 1.0
+    },
+    "queries": [
+      {
+        "query": "OpenTelemetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 22.003799997037277
+      },
+      {
+        "query": "WebVTT",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.284899995080195
+      },
+      {
+        "query": "PostGIS",
+        "grades": {
+          "atlas": 3,
+          "trail": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "atlas",
+          "trail"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 7.34349999402184
+      },
+      {
+        "query": "OCR",
+        "grades": {
+          "glyph": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "glyph"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.214299995917827
+      },
+      {
+        "query": "wheel odometry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.095799995819107
+      },
+      {
+        "query": "catchment runoff",
+        "grades": {
+          "delta": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "delta"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.302099995082244
+      },
+      {
+        "query": "failover",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "cedar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.190100000821985
+      },
+      {
+        "query": "point-in-time recovery",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "cedar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 17.274300000281073
+      },
+      {
+        "query": "percentile latency",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.157700001494959
+      },
+      {
+        "query": "vector tiles",
+        "grades": {
+          "trail": 3,
+          "atlas": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "trail"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 6.815700005972758
+      },
+      {
+        "query": "ARIA",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "loom"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 6.218499998794869
+      },
+      {
+        "query": "OpenTelmetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        },
+        "ms": 7.2044000116875395
+      },
+      {
+        "query": "wheel odomtry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 9.224399997037835
+      },
+      {
+        "query": "PostGSI geometry",
+        "grades": {
+          "atlas": 3,
+          "trail": 2
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "trail"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.3373519727104165,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.3373519727104165
+        },
+        "ms": 10.365699999965727
+      },
+      {
+        "query": "recover from an accidental table deletion",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "glyph"
+        ],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        },
+        "ms": 10.984900000039488
+      },
+      {
+        "query": "let a student follow spoken lectures by reading along",
+        "grades": {
+          "echo": 3,
+          "loom": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 9.867200002190657
+      },
+      {
+        "query": "correct colors that look too warm in photos",
+        "grades": {
+          "prism": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "prism"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 10.027199998148717
+      },
+      {
+        "query": "see where a request spent time across services",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "s334",
+          "s624",
+          "s614",
+          "s884",
+          "s844",
+          "s254",
+          "s404",
+          "s554",
+          "s104",
+          "s414"
+        ],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        },
+        "ms": 32.613799994578585
+      },
+      {
+        "query": "PostGIS geodata",
+        "grades": {
+          "trail": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "remote",
+            "onsite"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "trail"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 12.018299996270798
+      },
+      {
+        "query": "subtitle timing",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "onsite",
+            "hybrid"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "echo"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 7.320599994272925
+      },
+      {
+        "query": "PostgreSQL backup rehearsal",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {
+          "min_salary": 50000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "cedar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 7.64060000074096
+      },
+      {
+        "query": "compress changed storage blocks",
+        "grades": {
+          "frost": 3
+        },
+        "filters": {
+          "min_salary": 60000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "frost"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 10.06240000424441
+      },
+      {
+        "query": "captions",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "echo"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 7.170500000938773
+      },
+      {
+        "query": "screen reader keyboard testing",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {
+          "mode": "remote",
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "loom"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 7.470399999874644
+      }
+    ]
+  },
+  "semantic": {
+    "metadata": {
+      "dataset": "fusion-cases-v1",
+      "sample_count": 24,
+      "intent_clusters": 24,
+      "index_size": 1052,
+      "strategy": "semantic",
+      "model": "all-MiniLM-L6-v2",
+      "ranking": "cosine-rrf-bounded-v2",
+      "rrf_k": 60,
+      "lexical": "strict"
+    },
+    "metrics": {
+      "mrr": 0.9375,
+      "recall_5": 0.8958333333333334,
+      "precision_5": 0.21666666666666667,
+      "ndcg_5": 0.9307799408773545,
+      "recall_10": 0.8958333333333334,
+      "precision_10": 0.10833333333333334,
+      "ndcg_10": 0.9307799408773545,
+      "p50_ms": 77.22220000141533,
+      "p95_ms": 85.06847500320873,
+      "constraint_violations": 0,
+      "returned": 233,
+      "violation_rate": 0.0
+    },
+    "by_category": {
+      "exact": 0.9247081943807358,
+      "abbreviation": 1.0,
+      "rare-term": 1.0,
+      "typo": 0.9852768631153933,
+      "paraphrase": 0.9586597063564786,
+      "exclusion": 0.5,
+      "currency-period": 1.0,
+      "employment": 1.0,
+      "combined": 1.0
+    },
+    "queries": [
+      {
+        "query": "OpenTelemetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse",
+          "s797",
+          "s777",
+          "s727",
+          "s787",
+          "s767",
+          "s717",
+          "s707",
+          "s747",
+          "s757"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 18708.735699998215
+      },
+      {
+        "query": "WebVTT",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo",
+          "pulse",
+          "s121",
+          "s521",
+          "s527",
+          "s827",
+          "s127",
+          "s321",
+          "s327",
+          "s627"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 83.45099999860395
+      },
+      {
+        "query": "PostGIS",
+        "grades": {
+          "atlas": 3,
+          "trail": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "atlas",
+          "trail",
+          "s592",
+          "s522",
+          "s292",
+          "s792",
+          "s392",
+          "s322",
+          "s992",
+          "s422"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 76.32989999547135
+      },
+      {
+        "query": "OCR",
+        "grades": {
+          "glyph": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "glyph",
+          "s370",
+          "loom",
+          "s350",
+          "s380",
+          "s340",
+          "s330",
+          "s320",
+          "s310",
+          "s300"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 78.63750000251457
+      },
+      {
+        "query": "wheel odometry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit",
+          "trail",
+          "s396",
+          "s386",
+          "s897",
+          "s896",
+          "s326",
+          "s397",
+          "s697",
+          "s886"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 77.0228000037605
+      },
+      {
+        "query": "catchment runoff",
+        "grades": {
+          "delta": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "delta",
+          "s925",
+          "s325",
+          "s395",
+          "s125",
+          "s425",
+          "s195",
+          "s995",
+          "s975",
+          "s175"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 79.41600000776816
+      },
+      {
+        "query": "failover",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "s4",
+          "cedar",
+          "s504",
+          "s604",
+          "s54",
+          "s104",
+          "s34",
+          "s94",
+          "s804",
+          "s704"
+        ],
+        "metrics": {
+          "mrr": 0.5,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 0.6309297535714575,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 0.6309297535714575
+        },
+        "ms": 76.78040000610054
+      },
+      {
+        "query": "point-in-time recovery",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "cedar",
+          "s0",
+          "s90",
+          "s80",
+          "s60",
+          "s30",
+          "s20",
+          "s4",
+          "s94",
+          "s480"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 75.36760000220966
+      },
+      {
+        "query": "percentile latency",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse",
+          "s179",
+          "s199",
+          "s189",
+          "s159",
+          "s129",
+          "s178",
+          "s136",
+          "s196",
+          "s106"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 72.80039999750443
+      },
+      {
+        "query": "vector tiles",
+        "grades": {
+          "trail": 3,
+          "atlas": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "trail",
+          "atlas",
+          "frost",
+          "s326",
+          "s526",
+          "s626",
+          "s99",
+          "s66",
+          "s426",
+          "s826"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 75.97540000278968
+      },
+      {
+        "query": "ARIA",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "loom",
+          "s342",
+          "pulse",
+          "s352",
+          "s152",
+          "s142",
+          "s357",
+          "echo",
+          "s302",
+          "s947"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 66.50640000589192
+      },
+      {
+        "query": "OpenTelmetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "pulse",
+          "s326",
+          "s777",
+          "s727",
+          "s797",
+          "s767",
+          "s707",
+          "s787",
+          "s927",
+          "s426"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 77.42159999907017
+      },
+      {
+        "query": "wheel odomtry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit",
+          "trail",
+          "s197",
+          "s396",
+          "s997",
+          "s196",
+          "s397",
+          "s192",
+          "pulse",
+          "s386"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 79.25550000800285
+      },
+      {
+        "query": "PostGSI geometry",
+        "grades": {
+          "atlas": 3,
+          "trail": 2
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "atlas",
+          "s292",
+          "trail",
+          "s282",
+          "s272",
+          "cg-0002",
+          "cg-0012",
+          "cg-0032",
+          "cg-0022",
+          "s592"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 0.95583058934618,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 0.95583058934618
+        },
+        "ms": 81.05910000449512
+      },
+      {
+        "query": "recover from an accidental table deletion",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "glyph",
+          "s630",
+          "s640",
+          "s600",
+          "s638",
+          "s610",
+          "s620",
+          "s650",
+          "s678"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 78.26349999231752
+      },
+      {
+        "query": "let a student follow spoken lectures by reading along",
+        "grades": {
+          "echo": 3,
+          "loom": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo",
+          "s451",
+          "s551",
+          "s351",
+          "sonar",
+          "s951",
+          "s651",
+          "s357",
+          "s341",
+          "s51"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 84.49429999745917
+      },
+      {
+        "query": "correct colors that look too warm in photos",
+        "grades": {
+          "prism": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "prism",
+          "s786",
+          "s726",
+          "s776",
+          "s796",
+          "s756",
+          "s716",
+          "s723",
+          "s746",
+          "s729"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 82.72089999809396
+      },
+      {
+        "query": "see where a request spent time across services",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "pulse",
+          "s100",
+          "s170",
+          "s130",
+          "s160",
+          "s108",
+          "s110",
+          "s180",
+          "s169",
+          "s105"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 85.16980000422336
+      },
+      {
+        "query": "PostGIS geodata",
+        "grades": {
+          "trail": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "remote",
+            "onsite"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "s292",
+          "s262",
+          "s252",
+          "s772",
+          "cg-0012",
+          "s242",
+          "s822",
+          "s472",
+          "s612",
+          "s752"
+        ],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        },
+        "ms": 48.55900000256952
+      },
+      {
+        "query": "subtitle timing",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "onsite",
+            "hybrid"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "echo",
+          "sonar",
+          "s103",
+          "s156",
+          "s109",
+          "s143",
+          "s789",
+          "s196",
+          "s759",
+          "s141"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 48.53929999808315
+      },
+      {
+        "query": "PostgreSQL backup rehearsal",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {
+          "min_salary": 50000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "s92",
+          "s52",
+          "s32",
+          "s632",
+          "s622",
+          "s492",
+          "s992",
+          "cg-0002",
+          "s502"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 43.90350000176113
+      },
+      {
+        "query": "compress changed storage blocks",
+        "grades": {
+          "frost": 3
+        },
+        "filters": {
+          "min_salary": 60000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "frost",
+          "sonar",
+          "pulse"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 26.64579999691341
+      },
+      {
+        "query": "captions",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "echo",
+          "s356",
+          "s381",
+          "s391",
+          "s551",
+          "s341",
+          "s556",
+          "loom",
+          "s951",
+          "s981"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 81.0392999992473
+      },
+      {
+        "query": "screen reader keyboard testing",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {
+          "mode": "remote",
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "loom",
+          "echo",
+          "s306",
+          "s301",
+          "s396",
+          "s378",
+          "s360",
+          "s837",
+          "s948",
+          "s997"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 41.6793000040343
+      }
+    ]
+  },
+  "hybrid": {
+    "metadata": {
+      "dataset": "fusion-cases-v1",
+      "sample_count": 24,
+      "intent_clusters": 24,
+      "index_size": 1052,
+      "strategy": "hybrid",
+      "model": "all-MiniLM-L6-v2",
+      "ranking": "cosine-rrf-bounded-v2",
+      "rrf_k": 60,
+      "lexical": "strict"
+    },
+    "metrics": {
+      "mrr": 0.9583333333333334,
+      "recall_5": 0.8958333333333334,
+      "precision_5": 0.21666666666666667,
+      "ndcg_5": 0.9461578678118772,
+      "recall_10": 0.8958333333333334,
+      "precision_10": 0.10833333333333334,
+      "ndcg_10": 0.9461578678118772,
+      "p50_ms": 62.16699999640696,
+      "p95_ms": 67.73139499273384,
+      "constraint_violations": 0,
+      "returned": 233,
+      "violation_rate": 0.0
+    },
+    "by_category": {
+      "exact": 0.9862199021188262,
+      "abbreviation": 1.0,
+      "rare-term": 1.0,
+      "typo": 0.9852768631153933,
+      "paraphrase": 0.9586597063564786,
+      "exclusion": 0.5,
+      "currency-period": 1.0,
+      "employment": 1.0,
+      "combined": 1.0
+    },
+    "queries": [
+      {
+        "query": "OpenTelemetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse",
+          "s797",
+          "s777",
+          "s727",
+          "s787",
+          "s767",
+          "s717",
+          "s707",
+          "s747",
+          "s757"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 64.06980000610929
+      },
+      {
+        "query": "WebVTT",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo",
+          "pulse",
+          "s121",
+          "s521",
+          "s527",
+          "s827",
+          "s127",
+          "s321",
+          "s327",
+          "s627"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 66.38269999530166
+      },
+      {
+        "query": "PostGIS",
+        "grades": {
+          "atlas": 3,
+          "trail": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "atlas",
+          "trail",
+          "s592",
+          "s522",
+          "s292",
+          "s792",
+          "s392",
+          "s322",
+          "s992",
+          "s422"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 66.07960000110324
+      },
+      {
+        "query": "OCR",
+        "grades": {
+          "glyph": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "glyph",
+          "s370",
+          "loom",
+          "s350",
+          "s380",
+          "s340",
+          "s330",
+          "s320",
+          "s310",
+          "s300"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 61.05519999982789
+      },
+      {
+        "query": "wheel odometry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit",
+          "trail",
+          "s396",
+          "s386",
+          "s897",
+          "s896",
+          "s326",
+          "s397",
+          "s697",
+          "s886"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 67.35169999592472
+      },
+      {
+        "query": "catchment runoff",
+        "grades": {
+          "delta": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "delta",
+          "s925",
+          "s325",
+          "s395",
+          "s125",
+          "s425",
+          "s195",
+          "s995",
+          "s975",
+          "s175"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 63.222899989341386
+      },
+      {
+        "query": "failover",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "s4",
+          "s504",
+          "s604",
+          "s54",
+          "s104",
+          "s34",
+          "s94",
+          "s804",
+          "s704"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 62.90469999657944
+      },
+      {
+        "query": "point-in-time recovery",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "cedar",
+          "s0",
+          "s90",
+          "s80",
+          "s60",
+          "s30",
+          "s20",
+          "s4",
+          "s94",
+          "s480"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 62.397799993050285
+      },
+      {
+        "query": "percentile latency",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse",
+          "s179",
+          "s199",
+          "s189",
+          "s159",
+          "s129",
+          "s178",
+          "s136",
+          "s196",
+          "s106"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 60.1920000044629
+      },
+      {
+        "query": "vector tiles",
+        "grades": {
+          "trail": 3,
+          "atlas": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "trail",
+          "atlas",
+          "frost",
+          "s326",
+          "s526",
+          "s626",
+          "s99",
+          "s66",
+          "s426",
+          "s826"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 61.93619999976363
+      },
+      {
+        "query": "ARIA",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "loom",
+          "s342",
+          "pulse",
+          "s352",
+          "s152",
+          "s142",
+          "s357",
+          "echo",
+          "s302",
+          "s947"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 66.37670000782236
+      },
+      {
+        "query": "OpenTelmetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "pulse",
+          "s326",
+          "s777",
+          "s727",
+          "s797",
+          "s767",
+          "s707",
+          "s787",
+          "s927",
+          "s426"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 67.79839999217074
+      },
+      {
+        "query": "wheel odomtry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit",
+          "trail",
+          "s197",
+          "s396",
+          "s997",
+          "s196",
+          "s397",
+          "s192",
+          "pulse",
+          "s386"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 78.82609999796841
+      },
+      {
+        "query": "PostGSI geometry",
+        "grades": {
+          "atlas": 3,
+          "trail": 2
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "atlas",
+          "s292",
+          "trail",
+          "s282",
+          "s272",
+          "cg-0002",
+          "cg-0012",
+          "cg-0032",
+          "cg-0022",
+          "s592"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 0.95583058934618,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 0.95583058934618
+        },
+        "ms": 60.08060000021942
+      },
+      {
+        "query": "recover from an accidental table deletion",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "glyph",
+          "s630",
+          "s640",
+          "s600",
+          "s638",
+          "s610",
+          "s620",
+          "s650",
+          "s678"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 58.733600002597086
+      },
+      {
+        "query": "let a student follow spoken lectures by reading along",
+        "grades": {
+          "echo": 3,
+          "loom": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo",
+          "s451",
+          "s551",
+          "s351",
+          "sonar",
+          "s951",
+          "s651",
+          "s357",
+          "s341",
+          "s51"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 59.582800007774495
+      },
+      {
+        "query": "correct colors that look too warm in photos",
+        "grades": {
+          "prism": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "prism",
+          "s786",
+          "s726",
+          "s776",
+          "s796",
+          "s756",
+          "s716",
+          "s723",
+          "s746",
+          "s729"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 64.85089998750482
+      },
+      {
+        "query": "see where a request spent time across services",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "pulse",
+          "s100",
+          "s170",
+          "s130",
+          "s160",
+          "s108",
+          "s110",
+          "s180",
+          "s169",
+          "s105"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 66.98540000070352
+      },
+      {
+        "query": "PostGIS geodata",
+        "grades": {
+          "trail": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "remote",
+            "onsite"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "s292",
+          "s262",
+          "s252",
+          "s772",
+          "cg-0012",
+          "s242",
+          "s822",
+          "s472",
+          "s612",
+          "s752"
+        ],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        },
+        "ms": 32.19810000155121
+      },
+      {
+        "query": "subtitle timing",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "onsite",
+            "hybrid"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "echo",
+          "sonar",
+          "s103",
+          "s156",
+          "s109",
+          "s143",
+          "s789",
+          "s196",
+          "s759",
+          "s141"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 34.94030000001658
+      },
+      {
+        "query": "PostgreSQL backup rehearsal",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {
+          "min_salary": 50000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "s92",
+          "s52",
+          "s32",
+          "s632",
+          "s622",
+          "s492",
+          "s992",
+          "cg-0002",
+          "s502"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 37.446700007421896
+      },
+      {
+        "query": "compress changed storage blocks",
+        "grades": {
+          "frost": 3
+        },
+        "filters": {
+          "min_salary": 60000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "frost",
+          "sonar",
+          "pulse"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 12.06770000862889
+      },
+      {
+        "query": "captions",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "echo",
+          "s356",
+          "s381",
+          "s391",
+          "s551",
+          "s341",
+          "s556",
+          "loom",
+          "s951",
+          "s981"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 52.576300004147924
+      },
+      {
+        "query": "screen reader keyboard testing",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {
+          "mode": "remote",
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "loom",
+          "echo",
+          "s306",
+          "s301",
+          "s396",
+          "s378",
+          "s360",
+          "s837",
+          "s948",
+          "s997"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 25.088900001719594
+      }
+    ]
+  },
+  "personalized": {
+    "metadata": {
+      "dataset": "fusion-cases-v1",
+      "sample_count": 24,
+      "intent_clusters": 24,
+      "index_size": 1052,
+      "strategy": "personalized",
+      "model": "all-MiniLM-L6-v2",
+      "ranking": "cosine-rrf-bounded-v2",
+      "rrf_k": 60,
+      "lexical": "strict"
+    },
+    "metrics": {
+      "mrr": 0.9583333333333334,
+      "recall_5": 0.8958333333333334,
+      "precision_5": 0.21666666666666667,
+      "ndcg_5": 0.947998259922453,
+      "recall_10": 0.8958333333333334,
+      "precision_10": 0.10833333333333334,
+      "ndcg_10": 0.947998259922453,
+      "p50_ms": 49.720249997335486,
+      "p95_ms": 62.702919996809214,
+      "constraint_violations": 0,
+      "returned": 233,
+      "violation_rate": 0.0
+    },
+    "by_category": {
+      "exact": 0.9862199021188262,
+      "abbreviation": 1.0,
+      "rare-term": 1.0,
+      "typo": 1.0,
+      "paraphrase": 0.9586597063564786,
+      "exclusion": 0.5,
+      "currency-period": 1.0,
+      "employment": 1.0,
+      "combined": 1.0
+    },
+    "queries": [
+      {
+        "query": "OpenTelemetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse",
+          "s797",
+          "s777",
+          "s727",
+          "s787",
+          "s767",
+          "s717",
+          "s707",
+          "s747",
+          "s757"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 63.420699996640906
+      },
+      {
+        "query": "WebVTT",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo",
+          "pulse",
+          "s527",
+          "s121",
+          "s827",
+          "s127",
+          "s521",
+          "s327",
+          "s627",
+          "s321"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 57.19540000427514
+      },
+      {
+        "query": "PostGIS",
+        "grades": {
+          "atlas": 3,
+          "trail": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "atlas",
+          "trail",
+          "s592",
+          "s522",
+          "s292",
+          "s792",
+          "s392",
+          "s322",
+          "s992",
+          "s422"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 56.65079999016598
+      },
+      {
+        "query": "OCR",
+        "grades": {
+          "glyph": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "glyph",
+          "s370",
+          "loom",
+          "s350",
+          "s380",
+          "s340",
+          "s330",
+          "s320",
+          "s310",
+          "s300"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 56.070499995257705
+      },
+      {
+        "query": "wheel odometry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit",
+          "trail",
+          "s396",
+          "s386",
+          "s896",
+          "s897",
+          "s326",
+          "s397",
+          "s886",
+          "s697"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 53.24359999212902
+      },
+      {
+        "query": "catchment runoff",
+        "grades": {
+          "delta": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "delta",
+          "s925",
+          "s325",
+          "s395",
+          "s125",
+          "s425",
+          "s195",
+          "s995",
+          "s975",
+          "s175"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 55.354399999487214
+      },
+      {
+        "query": "failover",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "s4",
+          "s504",
+          "s604",
+          "s54",
+          "s104",
+          "s34",
+          "s94",
+          "s804",
+          "s704"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 51.615300006233156
+      },
+      {
+        "query": "point-in-time recovery",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "cedar",
+          "s0",
+          "s90",
+          "s80",
+          "s60",
+          "s30",
+          "s4",
+          "s20",
+          "s94",
+          "s480"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 49.37179999251384
+      },
+      {
+        "query": "percentile latency",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "pulse",
+          "s179",
+          "s199",
+          "s189",
+          "s159",
+          "s129",
+          "s136",
+          "s178",
+          "s196",
+          "s106"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 76.66710000194144
+      },
+      {
+        "query": "vector tiles",
+        "grades": {
+          "trail": 3,
+          "atlas": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "trail",
+          "atlas",
+          "frost",
+          "s326",
+          "s526",
+          "s99",
+          "s626",
+          "s66",
+          "s426",
+          "s826"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 49.743199997465126
+      },
+      {
+        "query": "ARIA",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "loom",
+          "s342",
+          "s352",
+          "pulse",
+          "s152",
+          "s142",
+          "echo",
+          "s357",
+          "s302",
+          "s332"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 48.874500003876165
+      },
+      {
+        "query": "OpenTelmetry",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "pulse",
+          "s777",
+          "s727",
+          "s326",
+          "s797",
+          "s767",
+          "s707",
+          "s787",
+          "s927",
+          "s427"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 49.697299997205846
+      },
+      {
+        "query": "wheel odomtry",
+        "grades": {
+          "orbit": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "orbit",
+          "trail",
+          "s197",
+          "s396",
+          "s997",
+          "s196",
+          "s397",
+          "s192",
+          "s386",
+          "pulse"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 58.63549999776296
+      },
+      {
+        "query": "PostGSI geometry",
+        "grades": {
+          "atlas": 3,
+          "trail": 2
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "atlas",
+          "trail",
+          "s292",
+          "s282",
+          "s272",
+          "cg-0002",
+          "cg-0012",
+          "cg-0032",
+          "cg-0022",
+          "s592"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        },
+        "ms": 49.652199988486245
+      },
+      {
+        "query": "recover from an accidental table deletion",
+        "grades": {
+          "cedar": 3,
+          "frost": 1
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "glyph",
+          "s630",
+          "s640",
+          "s600",
+          "s610",
+          "s638",
+          "s620",
+          "s650",
+          "s678"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 46.51759999978822
+      },
+      {
+        "query": "let a student follow spoken lectures by reading along",
+        "grades": {
+          "echo": 3,
+          "loom": 1
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "echo",
+          "s451",
+          "s551",
+          "s351",
+          "sonar",
+          "s357",
+          "s951",
+          "s651",
+          "s341",
+          "s51"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.9173194127129571,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.9173194127129571
+        },
+        "ms": 56.85750000702683
+      },
+      {
+        "query": "correct colors that look too warm in photos",
+        "grades": {
+          "prism": 3
+        },
+        "filters": {},
+        "profile": 0,
+        "ids": [
+          "prism",
+          "s786",
+          "s726",
+          "s776",
+          "s796",
+          "s756",
+          "s716",
+          "s746",
+          "s723",
+          "s729"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 49.813799996627495
+      },
+      {
+        "query": "see where a request spent time across services",
+        "grades": {
+          "pulse": 3
+        },
+        "filters": {},
+        "profile": 1,
+        "ids": [
+          "pulse",
+          "s100",
+          "s170",
+          "s130",
+          "s160",
+          "s108",
+          "s110",
+          "s169",
+          "s180",
+          "s105"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 49.04549999628216
+      },
+      {
+        "query": "PostGIS geodata",
+        "grades": {
+          "trail": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "remote",
+            "onsite"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "s292",
+          "s262",
+          "s252",
+          "s772",
+          "cg-0012",
+          "s242",
+          "s822",
+          "s472",
+          "s612",
+          "s752"
+        ],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        },
+        "ms": 26.3386000005994
+      },
+      {
+        "query": "subtitle timing",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_mode": [
+            "onsite",
+            "hybrid"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "echo",
+          "sonar",
+          "s103",
+          "s156",
+          "s109",
+          "s789",
+          "s143",
+          "s759",
+          "s196",
+          "s141"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 27.6912999979686
+      },
+      {
+        "query": "PostgreSQL backup rehearsal",
+        "grades": {
+          "cedar": 3
+        },
+        "filters": {
+          "min_salary": 50000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "cedar",
+          "s92",
+          "s52",
+          "s32",
+          "s632",
+          "s622",
+          "s492",
+          "s992",
+          "cg-0002",
+          "s502"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 28.61349999147933
+      },
+      {
+        "query": "compress changed storage blocks",
+        "grades": {
+          "frost": 3
+        },
+        "filters": {
+          "min_salary": 60000,
+          "currency": "INR",
+          "period": "month",
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "frost",
+          "pulse",
+          "sonar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 11.495200000354089
+      },
+      {
+        "query": "captions",
+        "grades": {
+          "echo": 3
+        },
+        "filters": {
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 0,
+        "ids": [
+          "echo",
+          "s356",
+          "s381",
+          "s391",
+          "s551",
+          "s341",
+          "s556",
+          "s951",
+          "loom",
+          "s981"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 47.30450001079589
+      },
+      {
+        "query": "screen reader keyboard testing",
+        "grades": {
+          "loom": 3
+        },
+        "filters": {
+          "mode": "remote",
+          "exclude_employment": [
+            "full-time"
+          ],
+          "verified_only": true
+        },
+        "profile": 1,
+        "ids": [
+          "loom",
+          "echo",
+          "s306",
+          "s301",
+          "s396",
+          "s378",
+          "s837",
+          "s360",
+          "s997",
+          "s117"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        },
+        "ms": 21.239900001091883
+      }
+    ]
+  },
+  "paired_comparison": {
+    "changed_top10": 1,
+    "helped": 1,
+    "hurt": 0,
+    "mean_delta": 0.015377926934522603,
+    "descriptive_bootstrap_95": [
+      0.0,
+      0.04613378080356781
+    ]
+  }
+}

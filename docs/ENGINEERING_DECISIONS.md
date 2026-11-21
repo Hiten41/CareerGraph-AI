@@ -1,0 +1,3 @@
+# Engineering decisions
+PostgreSQL owns both text and vector search so updates can commit in the same transaction. Fusion avoids combining raw cosine and text relevance values with incompatible scales. Documents with unknown eligibility remain visible with their uncertain fields. Currency conversion requires an authoritative rate and pay-period policy, so mismatched units stay uncertain.
+The LLM selects tools while the API supplies evidence. Deterministic local routing makes state transitions reproducible for tests. The application uses synthetic job-family labels because no real hiring outcome data was supplied.

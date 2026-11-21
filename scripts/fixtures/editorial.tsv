@@ -1,0 +1,12 @@
+atlas	Geospatial Data Intern	Align satellite tiles to parcel boundaries and repair invalid coordinate systems.	Python,PostGIS	remote	52000
+delta	Hydrology Modelling Intern	Forecast river levels from rain gauges and calibrate catchment runoff simulations.	R,Python	hybrid	48000
+sonar	Audio Systems Intern	Evaluate speech recognition on noisy audio and tune streaming transcription latency.	Python,Torch	remote	60000
+glyph	Document Imaging Intern	Recover tables from scanned invoices using OCR and measure character accuracy.	Python,OpenCV	onsite	47000
+pulse	Observability Intern	Trace request paths and construct percentile latency dashboards from distributed spans.	Go,OpenTelemetry	remote	62000
+cedar	Database Reliability Intern	Restore backup snapshots, rehearse failover and verify point-in-time recovery.	SQL,PostgreSQL	hybrid	51000
+loom	Accessibility Research Intern	Test screen readers, keyboard focus order and accessible forms with assistive technology.	HTML,ARIA	remote	50000
+orbit	Robotics Controls Intern	Tune motor feedback controllers and estimate vehicle pose from wheel odometry.	C++,ROS	onsite	57000
+frost	Storage Systems Intern	Implement immutable block snapshots and benchmark incremental backup compression.	Rust,Linux	remote	61000
+prism	Color Science Intern	Calibrate camera white balance and measure perceptual color errors on reference charts.	Python,OpenCV	hybrid	43000
+trail	Cartography Intern	Generalize road geometries for offline maps and render consistent vector tiles.	PostGIS,Go	hybrid	56000
+echo	Audio Accessibility Intern	Caption live lectures and audit subtitle timing for deaf students.	Python,WebVTT	remote	54000

@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "dataset": "agent-script-v1",
+    "mode": "deterministic",
+    "turns": 7,
+    "retention_probes": 4
+  },
+  "metrics": {
+    "tool_selection": 1.0,
+    "retention": 1.0,
+    "unsupported_record_fields": 0.0,
+    "record_fields_checked": 120,
+    "hosted_generation": "not evaluated"
+  },
+  "checks": {
+    "Find remote Python internships for 2028 graduates": true,
+    "Only AI/ML ones": true,
+    "At least 50,000 INR per month": true,
+    "Explain the best match": true,
+    "Compare the top two jobs": true,
+    "Remember that I prefer retrieval": true,
+    "confirm": true
+  }
+}

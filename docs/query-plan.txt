@@ -1,0 +1,8 @@
+Seq Scan on jobs  (cost=0.00..11.38 rows=1 width=16) (actual time=0.149..0.239 rows=20.00 loops=1)
+  Filter: (search_vector @@ '''python'''::tsquery)
+  Rows Removed by Filter: 20
+  Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=1
+Planning Time: 0.508 ms
+Execution Time: 0.482 ms

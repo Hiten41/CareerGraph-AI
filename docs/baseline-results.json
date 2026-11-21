@@ -1,0 +1,50 @@
+{
+  "keyword": {
+    "mrr": 0.5666666666666667,
+    "recall_5": 0.5666666666666667,
+    "precision_5": 0.43333333333333335,
+    "ndcg_5": 0.5666666666666667,
+    "recall_10": 0.5666666666666667,
+    "precision_10": 0.21666666666666667,
+    "ndcg_10": 0.5666666666666667,
+    "latency_p50_ms": 5.544649997318629,
+    "latency_p95_ms": 9.471870001289062,
+    "llm_quality": "not evaluated"
+  },
+  "semantic": {
+    "mrr": 1.0,
+    "recall_5": 1.0,
+    "precision_5": 0.78,
+    "ndcg_5": 1.0,
+    "recall_10": 1.0,
+    "precision_10": 0.39,
+    "ndcg_10": 1.0,
+    "latency_p50_ms": 30.949849999160506,
+    "latency_p95_ms": 73.13720500314957,
+    "llm_quality": "not evaluated"
+  },
+  "hybrid": {
+    "mrr": 1.0,
+    "recall_5": 1.0,
+    "precision_5": 0.78,
+    "ndcg_5": 1.0,
+    "recall_10": 1.0,
+    "precision_10": 0.39,
+    "ndcg_10": 1.0,
+    "latency_p50_ms": 14.780950004933402,
+    "latency_p95_ms": 18.005425000592368,
+    "llm_quality": "not evaluated"
+  },
+  "personalized": {
+    "mrr": 0.5785185185185185,
+    "recall_5": 0.5722222222222222,
+    "precision_5": 0.4466666666666667,
+    "ndcg_5": 0.5555040940510105,
+    "recall_10": 0.75,
+    "precision_10": 0.29000000000000004,
+    "ndcg_10": 0.6416256853476129,
+    "latency_p50_ms": 16.215249997912906,
+    "latency_p95_ms": 20.35327499906998,
+    "llm_quality": "not evaluated"
+  }
+}

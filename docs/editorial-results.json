@@ -1,0 +1,2792 @@
+{
+  "keyword": {
+    "metadata": {
+      "dataset": "editorial-targets-v1",
+      "index_size": 1052,
+      "strategy": "keyword",
+      "queries": 30,
+      "ranking": "cosine-rrf-bounded-v2",
+      "embedding": "all-MiniLM-L6-v2"
+    },
+    "metrics": {
+      "mrr": 0.4666666666666667,
+      "recall_5": 0.45,
+      "precision_5": 0.09333333333333334,
+      "ndcg_5": 0.45377157309218197,
+      "recall_10": 0.45,
+      "precision_10": 0.04666666666666667,
+      "ndcg_10": 0.45377157309218197,
+      "p50_ms": 3.426650000619702,
+      "p95_ms": 6.635985003231326
+    },
+    "queries": [
+      {
+        "query": "georeference aerial imagery",
+        "targets": "atlas",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "parcel geometry repair",
+        "targets": "atlas,trail",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "spatial coordinate reprojection",
+        "targets": "atlas",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "estimate flood risk from precipitation",
+        "targets": "delta",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "calibrate catchment runoff",
+        "targets": "delta",
+        "returned": [
+          "delta"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "river gauge forecasting",
+        "targets": "delta",
+        "returned": [
+          "delta"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "transcribe a speaker over background noise",
+        "targets": "sonar,echo",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "low delay streaming speech recognition",
+        "targets": "sonar",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "subtitle synchronization for lectures",
+        "targets": "echo",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "OCR accuracy for scanned receipts",
+        "targets": "glyph",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "extract tabular data from invoice images",
+        "targets": "glyph",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "convert scanned forms into text",
+        "targets": "glyph",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "OpenTelemetry tracing",
+        "targets": "pulse",
+        "returned": [
+          "pulse"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "measure request latency percentiles",
+        "targets": "pulse",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "distributed span instrumentation",
+        "targets": "pulse",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "database point in time restore",
+        "targets": "cedar",
+        "returned": [
+          "cedar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "rehearse database failover",
+        "targets": "cedar",
+        "returned": [
+          "cedar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "incremental snapshot backups",
+        "targets": "frost,cedar",
+        "returned": [
+          "frost"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.6131471927654584,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.6131471927654584
+        }
+      },
+      {
+        "query": "keyboard only form navigation",
+        "targets": "loom",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "assistive technology screen readers",
+        "targets": "loom",
+        "returned": [
+          "loom"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "evaluate accessibility for deaf students",
+        "targets": "echo,loom",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "wheel odometry pose estimation",
+        "targets": "orbit",
+        "returned": [
+          "orbit"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "motor feedback controller tuning",
+        "targets": "orbit",
+        "returned": [
+          "orbit"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "ROS control systems",
+        "targets": "orbit",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      },
+      {
+        "query": "block snapshot compression",
+        "targets": "frost",
+        "returned": [
+          "frost"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "perceptual color error calibration",
+        "targets": "prism",
+        "returned": [
+          "prism"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "camera white balance",
+        "targets": "prism",
+        "returned": [
+          "prism"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "generalize road geometry",
+        "targets": "trail",
+        "returned": [
+          "trail"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "offline vector tile rendering",
+        "targets": "trail",
+        "returned": [
+          "trail"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "live captions for deaf learners",
+        "targets": "echo",
+        "returned": [],
+        "metrics": {
+          "mrr": 0,
+          "recall_5": 0.0,
+          "precision_5": 0.0,
+          "ndcg_5": 0.0,
+          "recall_10": 0.0,
+          "precision_10": 0.0,
+          "ndcg_10": 0.0
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "metadata": {
+      "dataset": "editorial-targets-v1",
+      "index_size": 1052,
+      "strategy": "semantic",
+      "queries": 30,
+      "ranking": "cosine-rrf-bounded-v2",
+      "embedding": "all-MiniLM-L6-v2"
+    },
+    "metrics": {
+      "mrr": 1.0,
+      "recall_5": 0.9833333333333333,
+      "precision_5": 0.22,
+      "ndcg_5": 0.9871049064255153,
+      "recall_10": 0.9833333333333333,
+      "precision_10": 0.11,
+      "ndcg_10": 0.9871049064255153,
+      "p50_ms": 74.81654999719467,
+      "p95_ms": 130.33151500785607
+    },
+    "queries": [
+      {
+        "query": "georeference aerial imagery",
+        "targets": "atlas",
+        "returned": [
+          "atlas",
+          "trail",
+          "s370",
+          "s970",
+          "prism",
+          "s870",
+          "s576",
+          "s570",
+          "s390",
+          "s376"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "parcel geometry repair",
+        "targets": "atlas,trail",
+        "returned": [
+          "atlas",
+          "s237",
+          "s230",
+          "s537",
+          "s637",
+          "s30",
+          "s630",
+          "s37",
+          "s837",
+          "s239"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.6131471927654584,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.6131471927654584
+        }
+      },
+      {
+        "query": "spatial coordinate reprojection",
+        "targets": "atlas",
+        "returned": [
+          "atlas",
+          "trail",
+          "orbit",
+          "s56",
+          "s96",
+          "s99",
+          "s59",
+          "s9",
+          "s6",
+          "s859"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "estimate flood risk from precipitation",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s825",
+          "s925",
+          "s625",
+          "s824",
+          "s126",
+          "s924",
+          "s826",
+          "s926",
+          "s425"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "calibrate catchment runoff",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s176",
+          "s376",
+          "s126",
+          "s326",
+          "s826",
+          "s926",
+          "s806",
+          "s876",
+          "s976"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "river gauge forecasting",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s926",
+          "s126",
+          "s726",
+          "s826",
+          "s626",
+          "s426",
+          "s526",
+          "s166",
+          "s226"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "transcribe a speaker over background noise",
+        "targets": "sonar,echo",
+        "returned": [
+          "sonar",
+          "echo",
+          "pulse",
+          "prism",
+          "loom",
+          "glyph",
+          "s346",
+          "s356",
+          "s381",
+          "s386"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "low delay streaming speech recognition",
+        "targets": "sonar",
+        "returned": [
+          "sonar",
+          "echo",
+          "s146",
+          "s116",
+          "s156",
+          "s126",
+          "s106",
+          "s186",
+          "s136",
+          "s196"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "subtitle synchronization for lectures",
+        "targets": "echo",
+        "returned": [
+          "echo",
+          "sonar",
+          "s56",
+          "s156",
+          "s556",
+          "s356",
+          "s50",
+          "s451",
+          "s756",
+          "s256"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "OCR accuracy for scanned receipts",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "s330",
+          "s310",
+          "s370",
+          "s300",
+          "s340",
+          "s380",
+          "s350",
+          "s570",
+          "s390"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "extract tabular data from invoice images",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "s660",
+          "s260",
+          "s668",
+          "s635",
+          "s760",
+          "s560",
+          "s860",
+          "s830",
+          "s658"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "convert scanned forms into text",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "loom",
+          "s350",
+          "s340",
+          "s50",
+          "s300",
+          "s330",
+          "s270",
+          "s310",
+          "s360"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "OpenTelemetry tracing",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s326",
+          "s627",
+          "s167",
+          "s797",
+          "s177",
+          "s127",
+          "s677",
+          "s626",
+          "s727"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "measure request latency percentiles",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s179",
+          "s199",
+          "s189",
+          "s195",
+          "s169",
+          "s178",
+          "s170",
+          "s159",
+          "s105"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "distributed span instrumentation",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s4",
+          "s114",
+          "s104",
+          "s804",
+          "s504",
+          "s204",
+          "s14",
+          "s167",
+          "s154"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "database point in time restore",
+        "targets": "cedar",
+        "returned": [
+          "cedar",
+          "s0",
+          "s20",
+          "s10",
+          "s90",
+          "s400",
+          "s70",
+          "s440",
+          "s80",
+          "s600"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "rehearse database failover",
+        "targets": "cedar",
+        "returned": [
+          "cedar",
+          "s0",
+          "s600",
+          "s800",
+          "s30",
+          "s400",
+          "s5",
+          "s45",
+          "s80",
+          "s20"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "incremental snapshot backups",
+        "targets": "frost,cedar",
+        "returned": [
+          "frost",
+          "cedar",
+          "s5",
+          "s45",
+          "s25",
+          "s35",
+          "s15",
+          "s95",
+          "s605",
+          "s205"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "keyboard only form navigation",
+        "targets": "loom",
+        "returned": [
+          "loom",
+          "s343",
+          "s383",
+          "s303",
+          "s313",
+          "s353",
+          "echo",
+          "s323",
+          "s393",
+          "s333"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "assistive technology screen readers",
+        "targets": "loom",
+        "returned": [
+          "loom",
+          "s347",
+          "s357",
+          "s370",
+          "s340",
+          "s350",
+          "s317",
+          "s387",
+          "s380",
+          "s300"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "evaluate accessibility for deaf students",
+        "targets": "echo,loom",
+        "returned": [
+          "echo",
+          "loom",
+          "s356",
+          "s346",
+          "s396",
+          "s350",
+          "s353",
+          "s306",
+          "s351",
+          "s357"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "wheel odometry pose estimation",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "trail",
+          "s396",
+          "prism",
+          "s696",
+          "s386",
+          "s376",
+          "s896",
+          "s786",
+          "s726"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "motor feedback controller tuning",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "s979",
+          "s479",
+          "s179",
+          "s579",
+          "s899",
+          "s489",
+          "s379",
+          "s889",
+          "s79"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "ROS control systems",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "s873",
+          "s863",
+          "frost",
+          "s73",
+          "s173",
+          "s823",
+          "s673",
+          "s883",
+          "s63"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "block snapshot compression",
+        "targets": "frost",
+        "returned": [
+          "frost",
+          "cedar",
+          "s45",
+          "glyph",
+          "s15",
+          "s25",
+          "s20",
+          "s525",
+          "s10",
+          "s5"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "perceptual color error calibration",
+        "targets": "prism",
+        "returned": [
+          "prism",
+          "s386",
+          "s376",
+          "s676",
+          "s356",
+          "s396",
+          "s686",
+          "cg-0016",
+          "cg-0026",
+          "cg-0006"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "camera white balance",
+        "targets": "prism",
+        "returned": [
+          "prism",
+          "glyph",
+          "s977",
+          "trail",
+          "s177",
+          "s987",
+          "s197",
+          "s974",
+          "s677",
+          "s127"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "generalize road geometry",
+        "targets": "trail",
+        "returned": [
+          "trail",
+          "s396",
+          "s306",
+          "s399",
+          "s806",
+          "s896",
+          "orbit",
+          "s296",
+          "delta",
+          "atlas"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "offline vector tile rendering",
+        "targets": "trail",
+        "returned": [
+          "trail",
+          "atlas",
+          "cg-0037",
+          "cg-0027",
+          "cg-0017",
+          "cg-0007",
+          "s527",
+          "s427",
+          "s327",
+          "s927"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "live captions for deaf learners",
+        "targets": "echo",
+        "returned": [
+          "echo",
+          "loom",
+          "s356",
+          "s351",
+          "s341",
+          "s391",
+          "s346",
+          "s381",
+          "s396",
+          "sonar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      }
+    ]
+  },
+  "hybrid": {
+    "metadata": {
+      "dataset": "editorial-targets-v1",
+      "index_size": 1052,
+      "strategy": "hybrid",
+      "queries": 30,
+      "ranking": "cosine-rrf-bounded-v2",
+      "embedding": "all-MiniLM-L6-v2"
+    },
+    "metrics": {
+      "mrr": 1.0,
+      "recall_5": 0.9833333333333333,
+      "precision_5": 0.22,
+      "ndcg_5": 0.9871049064255153,
+      "recall_10": 0.9833333333333333,
+      "precision_10": 0.11,
+      "ndcg_10": 0.9871049064255153,
+      "p50_ms": 56.956199994601775,
+      "p95_ms": 68.72292500338517
+    },
+    "queries": [
+      {
+        "query": "georeference aerial imagery",
+        "targets": "atlas",
+        "returned": [
+          "atlas",
+          "trail",
+          "s370",
+          "s970",
+          "prism",
+          "s870",
+          "s576",
+          "s570",
+          "s390",
+          "s376"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "parcel geometry repair",
+        "targets": "atlas,trail",
+        "returned": [
+          "atlas",
+          "s237",
+          "s230",
+          "s537",
+          "s637",
+          "s30",
+          "s630",
+          "s37",
+          "s837",
+          "s239"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.6131471927654584,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.6131471927654584
+        }
+      },
+      {
+        "query": "spatial coordinate reprojection",
+        "targets": "atlas",
+        "returned": [
+          "atlas",
+          "trail",
+          "orbit",
+          "s56",
+          "s96",
+          "s99",
+          "s59",
+          "s9",
+          "s6",
+          "s859"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "estimate flood risk from precipitation",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s825",
+          "s925",
+          "s625",
+          "s824",
+          "s126",
+          "s924",
+          "s826",
+          "s926",
+          "s425"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "calibrate catchment runoff",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s176",
+          "s376",
+          "s126",
+          "s326",
+          "s826",
+          "s926",
+          "s806",
+          "s876",
+          "s976"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "river gauge forecasting",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s926",
+          "s126",
+          "s726",
+          "s826",
+          "s626",
+          "s426",
+          "s526",
+          "s166",
+          "s226"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "transcribe a speaker over background noise",
+        "targets": "sonar,echo",
+        "returned": [
+          "sonar",
+          "echo",
+          "pulse",
+          "prism",
+          "loom",
+          "glyph",
+          "s346",
+          "s356",
+          "s381",
+          "s386"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "low delay streaming speech recognition",
+        "targets": "sonar",
+        "returned": [
+          "sonar",
+          "echo",
+          "s146",
+          "s116",
+          "s156",
+          "s126",
+          "s106",
+          "s186",
+          "s136",
+          "s196"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "subtitle synchronization for lectures",
+        "targets": "echo",
+        "returned": [
+          "echo",
+          "sonar",
+          "s56",
+          "s156",
+          "s556",
+          "s356",
+          "s50",
+          "s451",
+          "s756",
+          "s256"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "OCR accuracy for scanned receipts",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "s330",
+          "s310",
+          "s370",
+          "s300",
+          "s340",
+          "s380",
+          "s350",
+          "s570",
+          "s390"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "extract tabular data from invoice images",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "s660",
+          "s260",
+          "s668",
+          "s635",
+          "s760",
+          "s560",
+          "s860",
+          "s830",
+          "s658"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "convert scanned forms into text",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "loom",
+          "s350",
+          "s340",
+          "s50",
+          "s300",
+          "s330",
+          "s270",
+          "s310",
+          "s360"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "OpenTelemetry tracing",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s326",
+          "s627",
+          "s167",
+          "s797",
+          "s177",
+          "s127",
+          "s677",
+          "s626",
+          "s727"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "measure request latency percentiles",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s179",
+          "s199",
+          "s189",
+          "s195",
+          "s169",
+          "s178",
+          "s170",
+          "s159",
+          "s105"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "distributed span instrumentation",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s4",
+          "s114",
+          "s104",
+          "s804",
+          "s504",
+          "s204",
+          "s14",
+          "s167",
+          "s154"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "database point in time restore",
+        "targets": "cedar",
+        "returned": [
+          "cedar",
+          "s0",
+          "s20",
+          "s10",
+          "s90",
+          "s400",
+          "s70",
+          "s440",
+          "s80",
+          "s600"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "rehearse database failover",
+        "targets": "cedar",
+        "returned": [
+          "cedar",
+          "s0",
+          "s600",
+          "s800",
+          "s30",
+          "s400",
+          "s5",
+          "s45",
+          "s80",
+          "s20"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "incremental snapshot backups",
+        "targets": "frost,cedar",
+        "returned": [
+          "frost",
+          "cedar",
+          "s5",
+          "s45",
+          "s25",
+          "s35",
+          "s15",
+          "s95",
+          "s605",
+          "s205"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "keyboard only form navigation",
+        "targets": "loom",
+        "returned": [
+          "loom",
+          "s343",
+          "s383",
+          "s303",
+          "s313",
+          "s353",
+          "echo",
+          "s323",
+          "s393",
+          "s333"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "assistive technology screen readers",
+        "targets": "loom",
+        "returned": [
+          "loom",
+          "s347",
+          "s357",
+          "s370",
+          "s340",
+          "s350",
+          "s317",
+          "s387",
+          "s380",
+          "s300"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "evaluate accessibility for deaf students",
+        "targets": "echo,loom",
+        "returned": [
+          "echo",
+          "loom",
+          "s356",
+          "s346",
+          "s396",
+          "s350",
+          "s353",
+          "s306",
+          "s351",
+          "s357"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "wheel odometry pose estimation",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "trail",
+          "s396",
+          "prism",
+          "s696",
+          "s386",
+          "s376",
+          "s896",
+          "s786",
+          "s726"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "motor feedback controller tuning",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "s979",
+          "s479",
+          "s179",
+          "s579",
+          "s899",
+          "s489",
+          "s379",
+          "s889",
+          "s79"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "ROS control systems",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "s873",
+          "s863",
+          "frost",
+          "s73",
+          "s173",
+          "s823",
+          "s673",
+          "s883",
+          "s63"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "block snapshot compression",
+        "targets": "frost",
+        "returned": [
+          "frost",
+          "cedar",
+          "s45",
+          "glyph",
+          "s15",
+          "s25",
+          "s20",
+          "s525",
+          "s10",
+          "s5"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "perceptual color error calibration",
+        "targets": "prism",
+        "returned": [
+          "prism",
+          "s386",
+          "s376",
+          "s676",
+          "s356",
+          "s396",
+          "s686",
+          "cg-0016",
+          "cg-0026",
+          "cg-0006"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "camera white balance",
+        "targets": "prism",
+        "returned": [
+          "prism",
+          "glyph",
+          "s977",
+          "trail",
+          "s177",
+          "s987",
+          "s197",
+          "s974",
+          "s677",
+          "s127"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "generalize road geometry",
+        "targets": "trail",
+        "returned": [
+          "trail",
+          "s396",
+          "s306",
+          "s399",
+          "s806",
+          "s896",
+          "orbit",
+          "s296",
+          "delta",
+          "atlas"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "offline vector tile rendering",
+        "targets": "trail",
+        "returned": [
+          "trail",
+          "atlas",
+          "cg-0037",
+          "cg-0027",
+          "cg-0017",
+          "cg-0007",
+          "s527",
+          "s427",
+          "s327",
+          "s927"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "live captions for deaf learners",
+        "targets": "echo",
+        "returned": [
+          "echo",
+          "loom",
+          "s356",
+          "s351",
+          "s341",
+          "s391",
+          "s346",
+          "s381",
+          "s396",
+          "sonar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      }
+    ]
+  },
+  "personalized": {
+    "metadata": {
+      "dataset": "editorial-targets-v1",
+      "index_size": 1052,
+      "strategy": "personalized",
+      "queries": 30,
+      "ranking": "cosine-rrf-bounded-v2",
+      "embedding": "all-MiniLM-L6-v2"
+    },
+    "metrics": {
+      "mrr": 1.0,
+      "recall_5": 0.9833333333333333,
+      "precision_5": 0.22,
+      "ndcg_5": 0.9871049064255153,
+      "recall_10": 0.9833333333333333,
+      "precision_10": 0.11,
+      "ndcg_10": 0.9871049064255153,
+      "p50_ms": 55.17229999531992,
+      "p95_ms": 72.97815500132856
+    },
+    "queries": [
+      {
+        "query": "georeference aerial imagery",
+        "targets": "atlas",
+        "returned": [
+          "atlas",
+          "s370",
+          "trail",
+          "s970",
+          "s870",
+          "s570",
+          "s576",
+          "s390",
+          "prism",
+          "s470"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "parcel geometry repair",
+        "targets": "atlas,trail",
+        "returned": [
+          "atlas",
+          "s230",
+          "s237",
+          "s537",
+          "s30",
+          "s630",
+          "s637",
+          "s830",
+          "s280",
+          "s430"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 0.5,
+          "precision_5": 0.2,
+          "ndcg_5": 0.6131471927654584,
+          "recall_10": 0.5,
+          "precision_10": 0.1,
+          "ndcg_10": 0.6131471927654584
+        }
+      },
+      {
+        "query": "spatial coordinate reprojection",
+        "targets": "atlas",
+        "returned": [
+          "atlas",
+          "trail",
+          "orbit",
+          "s56",
+          "s96",
+          "s99",
+          "s59",
+          "s6",
+          "s9",
+          "s46"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "estimate flood risk from precipitation",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s825",
+          "s925",
+          "s625",
+          "s126",
+          "s824",
+          "s425",
+          "s826",
+          "s924",
+          "s325"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "calibrate catchment runoff",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s176",
+          "s376",
+          "s126",
+          "s326",
+          "s826",
+          "s926",
+          "s806",
+          "s876",
+          "s976"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "river gauge forecasting",
+        "targets": "delta",
+        "returned": [
+          "delta",
+          "s926",
+          "s126",
+          "s726",
+          "s826",
+          "s526",
+          "s626",
+          "s426",
+          "s166",
+          "s226"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "transcribe a speaker over background noise",
+        "targets": "sonar,echo",
+        "returned": [
+          "sonar",
+          "echo",
+          "prism",
+          "pulse",
+          "glyph",
+          "loom",
+          "s346",
+          "s356",
+          "s381",
+          "s386"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "low delay streaming speech recognition",
+        "targets": "sonar",
+        "returned": [
+          "sonar",
+          "echo",
+          "s146",
+          "s116",
+          "s156",
+          "s126",
+          "s106",
+          "s186",
+          "s136",
+          "s196"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "subtitle synchronization for lectures",
+        "targets": "echo",
+        "returned": [
+          "echo",
+          "sonar",
+          "s56",
+          "s556",
+          "s50",
+          "s156",
+          "s356",
+          "s451",
+          "s756",
+          "s256"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "OCR accuracy for scanned receipts",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "s330",
+          "s310",
+          "s370",
+          "s300",
+          "s340",
+          "s380",
+          "s350",
+          "s570",
+          "s390"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "extract tabular data from invoice images",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "s660",
+          "s260",
+          "s760",
+          "s560",
+          "s860",
+          "s635",
+          "s830",
+          "s668",
+          "s360"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "convert scanned forms into text",
+        "targets": "glyph",
+        "returned": [
+          "glyph",
+          "loom",
+          "s350",
+          "s340",
+          "s50",
+          "s300",
+          "s330",
+          "s270",
+          "s310",
+          "s360"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "OpenTelemetry tracing",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s326",
+          "s627",
+          "s167",
+          "s797",
+          "s177",
+          "s127",
+          "s626",
+          "s677",
+          "s727"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "measure request latency percentiles",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s179",
+          "s199",
+          "s195",
+          "s170",
+          "s189",
+          "s178",
+          "s169",
+          "s105",
+          "s159"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "distributed span instrumentation",
+        "targets": "pulse",
+        "returned": [
+          "pulse",
+          "s4",
+          "s114",
+          "s504",
+          "s104",
+          "s804",
+          "s204",
+          "s14",
+          "s167",
+          "s154"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "database point in time restore",
+        "targets": "cedar",
+        "returned": [
+          "cedar",
+          "s0",
+          "s20",
+          "s10",
+          "s90",
+          "s400",
+          "s70",
+          "s440",
+          "s80",
+          "s600"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "rehearse database failover",
+        "targets": "cedar",
+        "returned": [
+          "cedar",
+          "s0",
+          "s600",
+          "s800",
+          "s30",
+          "s400",
+          "s80",
+          "s20",
+          "s5",
+          "s630"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "incremental snapshot backups",
+        "targets": "frost,cedar",
+        "returned": [
+          "frost",
+          "cedar",
+          "s5",
+          "s45",
+          "s25",
+          "s35",
+          "s15",
+          "s0",
+          "s95",
+          "s20"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "keyboard only form navigation",
+        "targets": "loom",
+        "returned": [
+          "loom",
+          "s343",
+          "s383",
+          "s303",
+          "s313",
+          "echo",
+          "s353",
+          "s323",
+          "s393",
+          "s333"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "assistive technology screen readers",
+        "targets": "loom",
+        "returned": [
+          "loom",
+          "s370",
+          "s340",
+          "s350",
+          "s347",
+          "s357",
+          "s380",
+          "s300",
+          "s317",
+          "s387"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "evaluate accessibility for deaf students",
+        "targets": "echo,loom",
+        "returned": [
+          "echo",
+          "loom",
+          "s356",
+          "s350",
+          "s346",
+          "s396",
+          "s306",
+          "s353",
+          "s351",
+          "s357"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.4,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.2,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "wheel odometry pose estimation",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "trail",
+          "s396",
+          "prism",
+          "s696",
+          "s386",
+          "s376",
+          "s586",
+          "s896",
+          "s786"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "motor feedback controller tuning",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "s979",
+          "s579",
+          "s479",
+          "s179",
+          "s899",
+          "s489",
+          "s379",
+          "s889",
+          "s576"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "ROS control systems",
+        "targets": "orbit",
+        "returned": [
+          "orbit",
+          "s873",
+          "s863",
+          "frost",
+          "s73",
+          "s173",
+          "s823",
+          "s673",
+          "s883",
+          "s63"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "block snapshot compression",
+        "targets": "frost",
+        "returned": [
+          "frost",
+          "cedar",
+          "s45",
+          "s20",
+          "glyph",
+          "s15",
+          "s525",
+          "s25",
+          "s10",
+          "s5"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "perceptual color error calibration",
+        "targets": "prism",
+        "returned": [
+          "prism",
+          "s386",
+          "s376",
+          "s676",
+          "s356",
+          "s396",
+          "s686",
+          "cg-0016",
+          "cg-0026",
+          "cg-0006"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "camera white balance",
+        "targets": "prism",
+        "returned": [
+          "prism",
+          "glyph",
+          "s977",
+          "trail",
+          "s177",
+          "s987",
+          "s197",
+          "s974",
+          "s677",
+          "s127"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "generalize road geometry",
+        "targets": "trail",
+        "returned": [
+          "trail",
+          "s396",
+          "s306",
+          "s806",
+          "s399",
+          "s896",
+          "s596",
+          "s296",
+          "delta",
+          "orbit"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "offline vector tile rendering",
+        "targets": "trail",
+        "returned": [
+          "trail",
+          "atlas",
+          "cg-0037",
+          "s527",
+          "cg-0027",
+          "cg-0017",
+          "cg-0007",
+          "s427",
+          "s327",
+          "s927"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      },
+      {
+        "query": "live captions for deaf learners",
+        "targets": "echo",
+        "returned": [
+          "echo",
+          "loom",
+          "s356",
+          "s351",
+          "s341",
+          "s391",
+          "s346",
+          "s381",
+          "s396",
+          "sonar"
+        ],
+        "metrics": {
+          "mrr": 1.0,
+          "recall_5": 1.0,
+          "precision_5": 0.2,
+          "ndcg_5": 1.0,
+          "recall_10": 1.0,
+          "precision_10": 0.1,
+          "ndcg_10": 1.0
+        }
+      }
+    ]
+  }
+}

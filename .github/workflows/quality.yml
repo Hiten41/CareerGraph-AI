@@ -1,0 +1,41 @@
+name: quality
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: pgvector/pgvector:pg16
+        env: {POSTGRES_USER: careergraph, POSTGRES_PASSWORD: ci, POSTGRES_DB: careergraph}
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      PYTHONPATH: apps/api
+      DATABASE_URL: postgresql+psycopg://careergraph:ci@localhost/careergraph
+      CG_INTEGRATION: "1"
+      CG_SEEDED_TESTS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "24"}
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -r apps/api/requirements.txt pytest ruff mypy
+      - run: ruff check apps/api tests scripts && mypy apps/api/app --check-untyped-defs
+      - run: alembic -c apps/api/alembic.ini upgrade head && python scripts/seed.py && pytest -q
+      - run: npm ci && npm run lint && npm run typecheck && npm test && npm run build
+        working-directory: apps/web
+      - name: Browser smoke test
+        run: |
+          npm --prefix apps/web exec -- playwright install --with-deps chromium
+          uvicorn app.main:app --port 8000 > api.log 2>&1 &
+          (cd apps/web && npm run dev) > web.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://localhost:3000/api/v1/health/ready; then break; fi
+            sleep 2
+          done
+          curl -fsS http://localhost:3000/api/v1/health/ready
+          cd apps/web
+          npx playwright test
+

@@ -1,0 +1,24 @@
+{"query":"OpenTelemetry","grades":{"pulse":3},"category":"exact"}
+{"query":"WebVTT","grades":{"echo":3},"category":"abbreviation"}
+{"query":"PostGIS","grades":{"atlas":3,"trail":3},"category":"exact"}
+{"query":"OCR","grades":{"glyph":3},"category":"abbreviation"}
+{"query":"wheel odometry","grades":{"orbit":3},"category":"exact"}
+{"query":"catchment runoff","grades":{"delta":3},"category":"rare-term"}
+{"query":"failover","grades":{"cedar":3},"category":"exact"}
+{"query":"point-in-time recovery","grades":{"cedar":3,"frost":1},"category":"exact"}
+{"query":"percentile latency","grades":{"pulse":3},"category":"rare-term"}
+{"query":"vector tiles","grades":{"trail":3,"atlas":1},"category":"exact"}
+{"query":"ARIA","grades":{"loom":3},"category":"abbreviation"}
+{"query":"OpenTelmetry","grades":{"pulse":3},"category":"typo"}
+{"query":"wheel odomtry","grades":{"orbit":3},"category":"typo"}
+{"query":"PostGSI geometry","grades":{"atlas":3,"trail":2},"category":"typo"}
+{"query":"recover from an accidental table deletion","grades":{"cedar":3,"frost":1},"category":"paraphrase"}
+{"query":"let a student follow spoken lectures by reading along","grades":{"echo":3,"loom":1},"category":"paraphrase"}
+{"query":"correct colors that look too warm in photos","grades":{"prism":3},"category":"paraphrase"}
+{"query":"see where a request spent time across services","grades":{"pulse":3},"category":"paraphrase"}
+{"query":"PostGIS geodata","grades":{"trail":3},"category":"exclusion","filters":{"exclude_mode":["remote","onsite"],"verified_only":true}}
+{"query":"subtitle timing","grades":{"echo":3},"category":"exclusion","filters":{"exclude_mode":["onsite","hybrid"],"verified_only":true}}
+{"query":"PostgreSQL backup rehearsal","grades":{"cedar":3},"category":"currency-period","filters":{"min_salary":50000,"currency":"INR","period":"month","verified_only":true}}
+{"query":"compress changed storage blocks","grades":{"frost":3},"category":"currency-period","filters":{"min_salary":60000,"currency":"INR","period":"month","verified_only":true}}
+{"query":"captions","grades":{"echo":3},"category":"employment","filters":{"exclude_employment":["full-time"],"verified_only":true}}
+{"query":"screen reader keyboard testing","grades":{"loom":3},"category":"combined","filters":{"mode":"remote","exclude_employment":["full-time"],"verified_only":true}}

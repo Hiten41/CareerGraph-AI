@@ -1,0 +1,30 @@
+georeference aerial imagery	atlas
+parcel geometry repair	atlas,trail
+spatial coordinate reprojection	atlas
+estimate flood risk from precipitation	delta
+calibrate catchment runoff	delta
+river gauge forecasting	delta
+transcribe a speaker over background noise	sonar,echo
+low delay streaming speech recognition	sonar
+subtitle synchronization for lectures	echo
+OCR accuracy for scanned receipts	glyph
+extract tabular data from invoice images	glyph
+convert scanned forms into text	glyph
+OpenTelemetry tracing	pulse
+measure request latency percentiles	pulse
+distributed span instrumentation	pulse
+database point in time restore	cedar
+rehearse database failover	cedar
+incremental snapshot backups	frost,cedar
+keyboard only form navigation	loom
+assistive technology screen readers	loom
+evaluate accessibility for deaf students	echo,loom
+wheel odometry pose estimation	orbit
+motor feedback controller tuning	orbit
+ROS control systems	orbit
+block snapshot compression	frost
+perceptual color error calibration	prism
+camera white balance	prism
+generalize road geometry	trail
+offline vector tile rendering	trail
+live captions for deaf learners	echo

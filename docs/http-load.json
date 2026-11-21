@@ -1,0 +1,14 @@
+{
+  "requests": 40,
+  "concurrency": 4,
+  "success": 40,
+  "error_rate": 0.0,
+  "elapsed_seconds": 2.8954268999950727,
+  "success_per_second": 13.814888574830906,
+  "p50_ms": 273.0068000018946,
+  "p95_ms": 379.4672999996692,
+  "machine": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+  "system": "Windows-11-10.0.26300-SP0",
+  "query_cache": "four warm queries",
+  "database": "see deployment-specific pool settings"
+}

@@ -1,0 +1,27 @@
+# Each row is an authored intent cluster. Pipe-separated query variants share the explicit judgments.
+# primary ; secondary ; mode or salary constraint ; three or four independently worded requests
+atlas;trail;-;fix parcel boundaries after datum changes|clean overlapping county polygons|reproject cadastral features for a map|spatial database quality checks on land records
+delta;-;-;predict next week's watershed discharge|estimate how much rainfall becomes runoff|use river measurements to anticipate floods|calibrate a basin simulation against gauges
+sonar;echo;-;evaluate word errors in noisy lecture halls|make dictation responsive during streaming|recognize speech in a crowded railway station|compare acoustic transcription models
+glyph;-;-;read numerical columns in a photographed receipt|recover cells from scanned expense documents|audit character substitutions in invoice recognition|turn a printed ledger into machine readable rows
+pulse;-;-;find slow hops across a distributed request|track long tail service response times|instrument microservices with spans|debug slow API calls from trace timelines
+cedar;frost;-;recover yesterday's state after a bad database migration|practice switching to a replica during an outage|recover a database to a precise timestamp|validate disaster recovery procedures for SQL
+loom;echo;-;make an enrollment form usable without a mouse|find confusing screen reader labels|check modal focus returns to the trigger|audit controls for assistive technology
+orbit;-;-;estimate a robot's movement from encoder ticks|reduce oscillation in a wheel controller|fuse position updates for a mobile rover|tune feedback loops on a moving platform
+frost;cedar;-;reduce storage used by incremental backups|compare compression of changed disk blocks|measure write amplification during snapshots|deduplicate immutable storage checkpoints
+prism;-;-;correct a green cast in camera images|compare color rendition under two illuminants|evaluate chart based camera calibration|estimate a neutral point across cameras
+trail;atlas;-;simplify roads for a phone map|serve tiles without connectivity|preserve road topology while zooming out|package a city's cartography for offline use
+echo;sonar,loom;-;support hearing impaired students during lectures|align subtitles to spoken sentences|audit live caption lag in a classroom|convert a lesson into synchronized captions
+atlas;-;remote;remote land record geometry validation|work from home on geospatial coordinate errors|online placement using parcel boundaries|distributed team correcting satellite alignment
+sonar;echo;remote;remote real-time speech decoding|work from home on speech errors|transcription accuracy role outside the office|remote acoustic recognition placement
+pulse;-;remote;trace distributed transactions from home|remote monitoring for slow service requests|work remotely on percentile dashboards|remote engineering with telemetry spans
+loom;echo;remote;remote accessibility checks for digital courses|home based assistive technology testing|remote inclusive design evaluation|audit accessible learning forms remotely
+orbit;-;onsite;work in a robotics lab tuning motion|in person tests with wheel encoders|onsite mobile rover feedback|laboratory role in robot localization
+delta;-;hybrid;hybrid watershed modelling role|mixed office and remote river forecasting|hybrid field measurement and runoff simulation|partly onsite water level prediction
+cedar;-;hybrid;hybrid placement in SQL recovery planning|mixed office database failover drills|partly remote point in time restore work|hybrid disaster recovery for database operators
+glyph;-;onsite;in person document analysis role|onsite optical invoice digitization|office based scanning and table extraction|onsite role checking OCR output quality
+prism;-;hybrid;partly remote camera calibration internship|hybrid photographic color quality role|hybrid measurements of color fidelity|split-site image color correction
+frost;-;pay60;block compression internship paying 60000 INR monthly|well paid snapshot storage development|incremental backups with a 60000 rupee monthly floor|storage compression placement above 59000 monthly
+sonar;-;pay60;paid speech recognition at least 60000 monthly|transcription systems at 60000 INR a month|acoustic decoding internship with a monthly salary floor|streamed audio models at a minimum 60000 INR
+loom;echo;pay50;accessible learning internship above 50000 INR monthly|keyboard testing with a 50000 monthly minimum|accessible forms and captions with an INR stipend floor|inclusive classroom technology role paying at least 50000
+trail;atlas;pay50;map data engineering with a 50000 monthly floor|build road maps on a paid INR internship|monthly stipend for geospatial tile production|land mapping internship with minimum INR compensation
