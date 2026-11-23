@@ -1,4 +1,4 @@
-import { Network, Compass } from "lucide-react";
+import { Network, ArrowUpRight, ArrowRight, Check } from "lucide-react";
 export function AuthScreen({
   register,
   setRegister,
@@ -13,51 +13,50 @@ export function AuthScreen({
   authenticate: (f: FormData) => Promise<void>;
 }) {
   return (
-    <main className="landing">
-      <header className="brand">
-        <Network /> CareerGraph <span>AI</span>
-      </header>
-      <div className="landing-grid">
-        <section>
-          <p className="kicker">A CLEARER PATH TO WHAT’S NEXT</p>
+    <main className="entry">
+      <section className="entry-story">
+        <header>
+          <Network aria-hidden="true" /> CareerGraph AI
+        </header>
+        <div className="entry-intro">
           <h1>
-            Your ambition.
-            <br />A better direction.
+            Find work that <em>fits you.</em>
           </h1>
-          <p className="lead">
-            Find opportunities that connect to your skills, your interests, and
-            the work you want to do.
+          <p>
+            Explore roles by skill, then see the evidence behind each match.
           </p>
-          <div className="pill-row">
-            <span>Hybrid search</span>
-            <span>Explainable matches</span>
-            <span>You control the memory</span>
-          </div>
-          <div className="landing-note">
-            <Compass size={32} />
+          <figure className="entry-example">
+            <figcaption>
+              Example match <ArrowUpRight aria-hidden="true" size={18} />
+            </figcaption>
+            <strong>Backend Engineering Intern</strong>
             <p>
-              Built around evidence.
-              <br />
-              <span>
-                See what fits, what’s missing, and what’s still unknown.
-              </span>
+              <Check aria-hidden="true" size={16} /> Skill overlap{" "}
+              <b>Python · SQL</b>
             </p>
-          </div>
-          <p className="muted">
-            Local demonstration uses clearly labeled fictional jobs. No live
-            opportunities or hiring guarantees.
-          </p>
-        </section>
-        <section className="auth-card">
-          <p className="eyebrow">YOUR NEXT CHAPTER</p>
-          <h2>{register ? "Create your workspace" : "Welcome back"}</h2>
-          <p className="muted">
-            Start with a profile. Discover the possibilities.
+            <small>Illustration from a fictional job search</small>
+          </figure>
+        </div>
+        <footer>Built by Hiten Arora</footer>
+      </section>
+      <section className="entry-account">
+        <div className="entry-form">
+          <h2>{register ? "Create your account" : "Welcome back"}</h2>
+          <p>
+            {register
+              ? "Create a profile to start exploring roles."
+              : "Sign in to your CareerGraph workspace."}
           </p>
           <form action={authenticate}>
             <label>
               Email
-              <input name="email" type="email" autoComplete="email" required />
+              <input
+                placeholder="you@example.com"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+              />
             </label>
             <label>
               Password
@@ -70,8 +69,12 @@ export function AuthScreen({
                 required
               />
             </label>
+            {register && (
+              <small>Use at least 12 characters for your password.</small>
+            )}
             <button className="primary" disabled={busy}>
-              {busy ? "Please wait…" : register ? "Create account" : "Sign in"}
+              {busy ? "Please wait…" : register ? "Create account" : "Sign in"}{" "}
+              <ArrowRight size={18} aria-hidden="true" />
             </button>
           </form>
           {error && (
@@ -88,8 +91,8 @@ export function AuthScreen({
             Resume files are discarded after extraction. Your profile is saved
             only when you confirm.
           </p>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
   );
 }
