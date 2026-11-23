@@ -481,7 +481,7 @@ export default function Home() {
                     {turn.answer.results.map((r) => (
                       <li key={r.job.id}>
                         <button onClick={() => open(r)}>
-                          {r.job.title} � {r.job.company}
+                          {r.job.title} · {r.job.company}
                         </button>
                       </li>
                     ))}
@@ -493,7 +493,7 @@ export default function Home() {
                   <div className="section-heading">
                     <h3>
                       {chat.mode.startsWith("Deterministic")
-                        ? "Built-in search � no external AI"
+                        ? "Built-in search · no external AI"
                         : "AI-assisted search"}
                     </h3>
                     <button
