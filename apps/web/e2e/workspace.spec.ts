@@ -20,7 +20,7 @@ test("keep my edits, search, shortlist and account access", async ({
   try {
     const code = await page.locator(".notice code").innerText();
     await button("I have saved it").click();
-    await button("Your profile").click();
+    await button("Profile").click();
     await name.fill("Example");
     await button("Confirm & save profile").click();
     await expect(page.getByRole("status")).toHaveText("Profile saved.");
@@ -30,7 +30,7 @@ test("keep my edits, search, shortlist and account access", async ({
     await expect(name).toHaveValue("Unsaved example");
     page.once("dialog", (d) => d.accept());
     await button("Discover").click();
-    await button("Your profile").click();
+    await button("Profile").click();
     await expect(name).toHaveValue("Example");
     await button("Discover").click();
     await button("Remote Python internships").click();
@@ -44,7 +44,7 @@ test("keep my edits, search, shortlist and account access", async ({
       "aria-pressed",
       "true",
     );
-    await button("Saved opportunities").click();
+    await button("Saved Jobs").click();
     await button("View saved match evidence").click();
     await expect(page.getByRole("dialog")).toContainText(
       "Why this role appeared",
@@ -52,7 +52,7 @@ test("keep my edits, search, shortlist and account access", async ({
     await page.keyboard.press("Escape");
     await button("Discover").click();
     await page.locator("#query").fill("Only AI/ML ones");
-    await button("Ask agent").click();
+    await button("Search").click();
     await expect(
       page.getByText("domain: AI/ML", { exact: true }),
     ).toBeVisible();
@@ -70,10 +70,12 @@ test("keep my edits, search, shortlist and account access", async ({
         .locator("nav")
         .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
     ).toBeTruthy();
-    await button("Evaluation lab").click();
+    await button("Navigation").click();
+    await button("Evaluation Lab").click();
     await expect(page.locator("main")).not.toContainText(
       "Run the evaluation script",
     );
+    await button("Navigation").click();
     await button("Sign out").click();
     await button("Forgot password?").click();
     await page.getByLabel("Email", { exact: true }).fill(email);

@@ -1,5 +1,8 @@
 "use client";
 import { EvidenceValue } from "../components/evidence-value";
+import { SavedList } from "../features/saved-list";
+import { EvaluationReport } from "../features/evaluation-report";
+import { SearchComposer } from "../components/search-composer";
 import { AuthScreen } from "../features/auth-screen";
 import { MatchDialog } from "../features/match-dialog";
 import Link from "next/link";
@@ -14,8 +17,8 @@ import {
   Database,
   Sun,
   Moon,
-  Send,
-  Network,
+  Menu,
+  Waypoints,
   LogOut,
   Plus,
   FileText,
@@ -42,10 +45,12 @@ const emptyProfile: Profile = {
 };
 const nav = [
   ["discover", "Discover", Compass],
-  ["profile", "Your profile", UserRound],
-  ["saved", "Saved opportunities", Bookmark],
+
+  ["saved", "Saved Jobs", Bookmark],
+  ["analytics", "Evaluation Lab", ChartNoAxesCombined],
+  ["profile", "Profile", UserRound],
   ["preferences", "Preferences & memory", SlidersHorizontal],
-  ["analytics", "Evaluation lab", ChartNoAxesCombined],
+
   ["admin", "Data sources", Database],
 ] as const;
 export default function Home() {
@@ -93,6 +98,10 @@ export default function Home() {
     window.addEventListener("beforeunload", warn);
     return () => window.removeEventListener("beforeunload", warn);
   }, [dirty]);
+  const [menu, setMenu] = useState(false);
+  const [savedEvidence, setSavedEvidence] = useState<
+    Record<string, Result | null>
+  >({});
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     api<User>("/auth/me")
@@ -142,6 +151,7 @@ export default function Home() {
     if (busy || (dirty && !window.confirm("Discard unsaved profile changes?")))
       return;
     if (next === "profile") setBaseline(null);
+    setMenu(false);
     setView(next);
     await action(async () => {
       if (next === "profile") {
@@ -156,7 +166,17 @@ export default function Home() {
             await api<{ preferences: string[] }>("/preferences")
           ).preferences.join("\n"),
         );
-      if (next === "saved") setSaved(await api<Job[]>("/saved-jobs"));
+      if (next === "saved") {
+        const jobs = await api<Job[]>("/saved-jobs");
+        setSaved(jobs);
+        setSavedEvidence({});
+        const evidence: Record<string, Result | null> = {};
+        for (const job of jobs)
+          evidence[job.id] = await api<Result | null>(
+            "/saved-jobs/" + job.id + "/evidence",
+          );
+        setSavedEvidence(evidence);
+      }
       if (next === "analytics")
         setEvaluations(await api<Evaluation[]>("/evaluations"));
       if (next === "admin") setRuns(await api<unknown[]>("/admin/ingestion"));
@@ -233,20 +253,30 @@ export default function Home() {
     );
   if (!user)
     return (
-      <AuthScreen {...{ register, setRegister, busy, error, authenticate }} />
+      <AuthScreen
+        {...{ dark, register, setRegister, busy, error, authenticate }}
+      />
     );
   return (
     <div className={dark ? "workspace dark" : "workspace"}>
-      <aside className="sidebar">
+      <aside className={menu ? "sidebar expanded" : "sidebar"}>
         <Link href="/" className="brand">
-          <Network /> CareerGraph <span>AI</span>
+          <Waypoints /> CareerGraph AI
         </Link>
-        <p className="nav-label">YOUR WORKSPACE</p>
+        <button
+          className="menu-button"
+          aria-expanded={menu}
+          onClick={() => setMenu(!menu)}
+        >
+          <Menu size={18} /> Navigation
+        </button>
+        <p className="nav-label">Workspace</p>
         <nav>
           {nav
             .filter(([key]) => key !== "admin" || user.role === "admin")
             .map(([key, label, Icon]) => (
               <button
+                aria-current={view === key ? "page" : undefined}
                 key={key}
                 className={view === key ? "nav-item active" : "nav-item"}
                 onClick={() => navigate(key)}
@@ -257,12 +287,16 @@ export default function Home() {
             ))}
         </nav>
         <div className="sidebar-bottom">
-          <div className="demo-badge">SYNTHETIC DATA ENVIRONMENT</div>
-          <p>
-            Explore the product.
-            <br />
-            Listings are fictional.
-          </p>
+          <details className="account-menu">
+            <summary>
+              <span className="avatar">{user.email[0].toUpperCase()}</span>
+              <span>{profile.name || user.email.split("@")[0]}</span>
+            </summary>
+            <p>{user.email}</p>
+            <button onClick={() => navigate("preferences")}>
+              Account settings
+            </button>
+          </details>
           <button
             className="nav-item"
             onClick={() => {
@@ -325,7 +359,13 @@ export default function Home() {
             {user.email}
           </span>
         </header>
-        <main className="content">
+        <main
+          className={
+            "content view-" +
+            view +
+            (chat || results.length ? " has-search" : "")
+          }
+        >
           {error && (
             <div role="alert" className="error">
               {error}
@@ -356,279 +396,296 @@ export default function Home() {
           )}
           {view === "discover" && (
             <>
-              <div className="page-heading">
-                <div>
-                  <p className="kicker">CONNECT YOUR POTENTIAL</p>
-                  <h1>Find your next direction.</h1>
-                  <p className="muted">
-                    A thoughtful search, built around you.
-                  </p>
-                </div>
-                <span className="outline-badge">Evidence over guesswork</span>
-              </div>
-              <section className="search-panel">
-                <div className="search-heading">
-                  <span className="spark">
-                    <Compass size={22} />
-                  </span>
-                  <div>
-                    <h2>What would you like to work on?</h2>
-                    <p>Describe the role. Refine it together.</p>
-                  </div>
-                </div>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    discover(true);
-                  }}
-                >
-                  <label className="sr-only" htmlFor="query">
-                    Describe your job search or follow-up
-                  </label>
-                  <textarea
-                    id="query"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Find remote Python internships for 2028 graduates…"
-                    rows={2}
-                    maxLength={1000}
-                  />
-                  <div className="search-actions">
-                    <details>
-                      <summary>Advanced search</summary>
-                      <label>
-                        Direct search strategy
-                        <select
-                          value={strategy}
-                          onChange={(e) => setStrategy(e.target.value)}
+              <div className="discover-layout">
+                <div className="conversation">
+                  <section className="hero">
+                    <div className="hero-copy">
+                      <Compass aria-hidden="true" size={26} />
+                      <h1>Find Jobs That Fit You</h1>
+                      <p>
+                        AI-powered search, personalized ranking, and clear match
+                        evidence.
+                      </p>
+                    </div>
+                    {!(chat || results.length) && (
+                      <SearchComposer
+                        {...{ query, setQuery, busy }}
+                        submit={() => discover(true)}
+                      />
+                    )}
+                    <div className="suggestions">
+                      {[
+                        "Remote Python internships",
+                        "Software roles for freshers",
+                        "Product roles in India",
+                      ].map((q) => (
+                        <button
+                          key={q}
+                          disabled={busy}
+                          onClick={() => {
+                            setQuery("Find " + q);
+                            void discover(true, "Find " + q);
+                          }}
                         >
-                          <option value="personalized">
-                            Personalized hybrid
-                          </option>
-                          <option value="hybrid">Hybrid</option>
-                          <option value="keyword">Keyword</option>
-                          <option value="semantic">Semantic</option>
-                        </select>
-                      </label>
-                      <button
-                        type="button"
-                        className="secondary"
-                        disabled={busy || !query.trim()}
-                        onClick={() => discover(false)}
-                      >
-                        <Search size={16} />
-                        Direct search
-                      </button>
-                    </details>
-                    <button
-                      className="primary"
-                      disabled={busy || !query.trim()}
-                    >
-                      <Send size={16} />
-                      Ask agent
-                    </button>
-                  </div>
-                </form>
-                <label>
-                  <span>
-                    <input
-                      type="checkbox"
-                      checked={user.provider_consent}
-                      onChange={(e) => {
-                        const allowed = e.target.checked;
-                        action(async () => {
-                          await api("/privacy/provider-consent", {
-                            method: "PUT",
-                            body: body({ allowed }),
-                          });
-                          setUser({ ...user, provider_consent: allowed });
-                        });
-                      }}
-                    />{" "}
-                    Allow the configured AI provider to process this chat,
-                    profile and job evidence.
-                  </span>
-                </label>
-                <div className="suggestions">
-                  {[
-                    "Remote Python internships",
-                    "AI/ML internships for 2028 graduates",
-                    "Backend engineering internships",
-                  ].map((q) => (
-                    <button
-                      key={q}
-                      disabled={busy}
-                      onClick={() => {
-                        setQuery("Find " + q);
-                        void discover(true, "Find " + q);
-                      }}
-                    >
-                      {q}
-                    </button>
-                  ))}
-                </div>
-              </section>
-              {turns.slice(0, chat ? -1 : undefined).map((turn, index) => (
-                <details className="panel" key={index}>
-                  <summary>{turn.question}</summary>
-                  <p>
-                    {turn.answer.message.replaceAll(
-                      "(eligible)",
-                      "(meets search filters)",
-                    )}
-                  </p>
-                  <ul>
-                    {turn.answer.results.map((r) => (
-                      <li key={r.job.id}>
-                        <button onClick={() => open(r)}>
-                          {r.job.title} · {r.job.company}
+                          {q}
                         </button>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              ))}
-              {chat && (
-                <section className="agent-panel">
-                  <div className="section-heading">
-                    <h3>
-                      {chat.mode.startsWith("Deterministic")
-                        ? "Built-in search · no external AI"
-                        : "AI-assisted search"}
-                    </h3>
-                    <button
-                      className="text-btn"
-                      onClick={() => {
-                        sessionStorage.removeItem(
-                          "careergraph-session-" + user.id,
-                        );
-                        setTurns([]);
-                        setSession("");
-                        setChat(null);
-                        setResults([]);
-                      }}
-                    >
-                      <Plus size={15} />
-                      New conversation
-                    </button>
-                  </div>
-                  <strong>{turns.at(-1)?.question}</strong>
-                  <p>
-                    {chat.message.replaceAll(
-                      "(eligible)",
-                      "(meets search filters)",
-                    )}
-                  </p>
-                  {chat.pending_preference && (
-                    <p>
-                      Proposed: <strong>{chat.pending_preference}</strong>{" "}
+                      ))}
+                    </div>
+                  </section>
+                  {turns.slice(0, chat ? -1 : undefined).map((turn, index) => (
+                    <details className="panel" key={index}>
+                      <summary>{turn.question}</summary>
+                      <p>
+                        {turn.answer.message.replaceAll(
+                          "(eligible)",
+                          "(meets search filters)",
+                        )}
+                      </p>
+                      <ul>
+                        {turn.answer.results.map((r) => (
+                          <li key={r.job.id}>
+                            <button onClick={() => open(r)}>
+                              {r.job.title} · {r.job.company}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  ))}
+                  {chat && (
+                    <section className="agent-panel">
+                      <div className="section-heading">
+                        <h3>
+                          {chat.mode.startsWith("Deterministic")
+                            ? "Built-in search · no external AI"
+                            : "AI-assisted search"}
+                        </h3>
+                        <button
+                          className="text-btn"
+                          onClick={() => {
+                            sessionStorage.removeItem(
+                              "careergraph-session-" + user.id,
+                            );
+                            setTurns([]);
+                            setSession("");
+                            setChat(null);
+                            setResults([]);
+                          }}
+                        >
+                          <Plus size={15} />
+                          New conversation
+                        </button>
+                      </div>
+                      <strong>{turns.at(-1)?.question}</strong>
+                      <p>
+                        {chat.message.replaceAll(
+                          "(eligible)",
+                          "(meets search filters)",
+                        )}
+                      </p>
+                      {chat.pending_preference && (
+                        <p>
+                          Proposed: <strong>{chat.pending_preference}</strong>{" "}
+                          <button
+                            className="secondary"
+                            onClick={() => setQuery("confirm")}
+                          >
+                            Review & confirm
+                          </button>
+                        </p>
+                      )}
+                      <div className="tags">
+                        {Object.entries(chat.constraints)
+                          .filter(([, v]) => v !== null)
+                          .map(([k, v]) => (
+                            <span key={k}>
+                              {k.replaceAll("_", " ")}: {String(v)}
+                            </span>
+                          ))}
+                      </div>
+                      <p className="fine">
+                        Tools invoked: {chat.tools.join(" · ") || "None"}
+                      </p>
+                      <details>
+                        <summary>See supporting details</summary>
+                        <EvidenceValue value={chat.evidence} />
+                      </details>
+                    </section>
+                  )}
+                  {(chat || results.length > 0 || directRequest) && (
+                    <div className="section-heading">
+                      <h2>
+                        {results.length
+                          ? "Your recommendations"
+                          : "Your next opportunity starts here"}
+                      </h2>
+                      <span className="muted">
+                        {results.length
+                          ? `${results.length} results · relevance, not hiring probability`
+                          : "Search to build your shortlist"}
+                      </span>
+                    </div>
+                  )}
+                  {results.length ? (
+                    <div className="results">
+                      {results.map((r) => (
+                        <JobCard
+                          key={r.job.id}
+                          result={r}
+                          saved={saved.some((j) => j.id === r.job.id)}
+                          onOpen={() => open(r)}
+                          onSave={() =>
+                            action(async () => {
+                              if (saved.some((j) => j.id === r.job.id)) {
+                                await api("/saved-jobs/" + r.job.id, {
+                                  method: "DELETE",
+                                });
+                                setSaved(
+                                  saved.filter((j) => j.id !== r.job.id),
+                                );
+                                setNotice("Removed from saved jobs.");
+                                return;
+                              }
+                              await api("/saved-jobs", {
+                                method: "POST",
+                                body: body({
+                                  job_id: r.job.id,
+                                  session_id: directRequest ? null : session,
+                                  search_request: directRequest,
+                                }),
+                              });
+                              setSaved((previous) => [
+                                ...previous.filter((j) => j.id !== r.job.id),
+                                r.job,
+                              ]);
+                              setNotice("Saved to your opportunities.");
+                            })
+                          }
+                          onDismiss={() =>
+                            action(async () => {
+                              await api("/feedback", {
+                                method: "POST",
+                                body: body({ job_id: r.job.id, value: -1 }),
+                              });
+                              setResults(
+                                results.filter((x) => x.job.id !== r.job.id),
+                              );
+                              setNotice("Feedback saved for future ranking.");
+                            })
+                          }
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <section className="empty">
+                      <UserRound />
+                      <h2>
+                        {chat || directRequest
+                          ? "No matches for this search"
+                          : "Personalize your matches"}
+                      </h2>
+                      <p>
+                        {chat || directRequest
+                          ? "Try a broader role or fewer filters."
+                          : "Add your skills to see what fits and what each role still requires."}
+                      </p>
                       <button
                         className="secondary"
-                        onClick={() => setQuery("confirm")}
+                        onClick={() => navigate("profile")}
                       >
-                        Review & confirm
+                        Build your profile
                       </button>
-                    </p>
+                    </section>
                   )}
-                  <div className="tags">
-                    {Object.entries(chat.constraints)
-                      .filter(([, v]) => v !== null)
-                      .map(([k, v]) => (
-                        <span key={k}>
-                          {k.replaceAll("_", " ")}: {String(v)}
-                        </span>
-                      ))}
-                  </div>
-                  <p className="fine">
-                    Tools invoked: {chat.tools.join(" · ") || "None"}
+                  {(chat || results.length > 0) && (
+                    <div className="sticky-composer">
+                      <SearchComposer
+                        followup
+                        {...{ query, setQuery, busy }}
+                        submit={() => discover(true)}
+                      />
+                    </div>
+                  )}
+                </div>
+                <aside className="search-context">
+                  <h2>Search context</h2>
+                  <p className="muted">
+                    {chat
+                      ? "Current conversation filters"
+                      : "Choose a suggestion or describe your ideal role."}
                   </p>
+                  {chat && (
+                    <div className="tags">
+                      {Object.entries(chat.constraints)
+                        .filter(([, v]) => v !== null && String(v) !== "")
+                        .map(([k, v]) => (
+                          <span key={k}>
+                            {k.replaceAll("_", " ")} · {String(v)}
+                          </span>
+                        ))}
+                    </div>
+                  )}
                   <details>
-                    <summary>See supporting details</summary>
-                    <EvidenceValue value={chat.evidence} />
+                    <summary>Advanced search</summary>
+                    <label>
+                      Direct search strategy
+                      <select
+                        value={strategy}
+                        onChange={(e) => setStrategy(e.target.value)}
+                      >
+                        {["personalized", "hybrid", "semantic", "keyword"].map(
+                          (v) => (
+                            <option key={v} value={v}>
+                              {v}
+                            </option>
+                          ),
+                        )}
+                      </select>
+                    </label>
+                    <button
+                      className="secondary"
+                      disabled={busy || !query.trim()}
+                      onClick={() => discover(false)}
+                    >
+                      <Search size={16} />
+                      Direct search
+                    </button>
                   </details>
-                </section>
-              )}
-              <div className="section-heading">
-                <h2>
-                  {results.length
-                    ? "Your recommendations"
-                    : "Your next opportunity starts here"}
-                </h2>
-                <span className="muted">
-                  {results.length
-                    ? `${results.length} results · relevance, not hiring probability`
-                    : "Search to build your shortlist"}
-                </span>
+                  <details>
+                    <summary>AI provider privacy</summary>{" "}
+                    <label>
+                      <span>
+                        <input
+                          type="checkbox"
+                          checked={user.provider_consent}
+                          onChange={(e) => {
+                            const allowed = e.target.checked;
+                            action(async () => {
+                              await api("/privacy/provider-consent", {
+                                method: "PUT",
+                                body: body({ allowed }),
+                              });
+                              setUser({ ...user, provider_consent: allowed });
+                            });
+                          }}
+                        />{" "}
+                        Allow the configured AI provider to process this chat,
+                        profile and job evidence.
+                      </span>
+                    </label>
+                  </details>
+                </aside>
               </div>
-              {results.length ? (
-                <div className="results">
-                  {results.map((r) => (
-                    <JobCard
-                      key={r.job.id}
-                      result={r}
-                      saved={saved.some((j) => j.id === r.job.id)}
-                      onOpen={() => open(r)}
-                      onSave={() =>
-                        action(async () => {
-                          await api("/saved-jobs", {
-                            method: "POST",
-                            body: body({
-                              job_id: r.job.id,
-                              session_id: directRequest ? null : session,
-                              search_request: directRequest,
-                            }),
-                          });
-                          setSaved((previous) => [
-                            ...previous.filter((j) => j.id !== r.job.id),
-                            r.job,
-                          ]);
-                          setNotice("Saved to your opportunities.");
-                        })
-                      }
-                      onDismiss={() =>
-                        action(async () => {
-                          await api("/feedback", {
-                            method: "POST",
-                            body: body({ job_id: r.job.id, value: -1 }),
-                          });
-                          setResults(
-                            results.filter((x) => x.job.id !== r.job.id),
-                          );
-                          setNotice("Feedback saved for future ranking.");
-                        })
-                      }
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="empty">
-                  <Network size={44} />
-                  <h3>More than a list of jobs.</h3>
-                  <p>
-                    Search across skills and meaning. Every recommendation shows
-                    <br />
-                    the requirements you match and the information we can’t
-                    verify.
-                  </p>
-                  <button
-                    className="secondary"
-                    onClick={() => navigate("profile")}
-                  >
-                    Build your profile
-                  </button>
-                </div>
-              )}
             </>
           )}
           {view === "profile" && baseline && (
             <>
-              <p className="kicker">YOUR FOUNDATION</p>
-              <h1>A profile you control.</h1>
+              <h1>Your profile</h1>
               <p className="muted">
                 Review extracted details before saving. Completeness reflects
                 filled fields, never employability.
               </p>
-              <fieldset disabled={busy} className="panel">
+              <fieldset disabled={busy} className="panel profile-editor">
                 {user.provider_consent && (
                   <label>
                     <span>
@@ -643,6 +700,7 @@ export default function Home() {
                   </label>
                 )}
                 <label className="upload">
+                  <span className="section-title">Resume</span>
                   <FileText />
                   <strong>Import a PDF resume</strong>
                   <span>
@@ -685,6 +743,7 @@ export default function Home() {
                     });
                   }}
                 >
+                  <h2>Personal information &amp; skills</h2>
                   <div className="form-grid">
                     <label>
                       Name
@@ -792,66 +851,42 @@ export default function Home() {
           )}
           {view === "saved" && (
             <>
-              <h1>Your shortlist.</h1>
+              <h1>Saved Jobs</h1>
               <p className="muted">Opportunities you want to revisit.</p>
               {saved.length ? (
-                saved.map((j) => (
-                  <section className="panel" key={j.id}>
-                    <h2>{j.title}</h2>
-                    <p>
-                      {j.company} · {j.location} ·{" "}
-                      {j.synthetic ? "Fictional demo" : "Imported source"}
-                    </p>
-                    <p>{j.description}</p>
-                    <button
-                      onClick={() =>
-                        action(async () => {
-                          const result = await api<Result | null>(
-                            "/saved-jobs/" + j.id + "/evidence",
-                          );
-                          if (result) open(result);
-                          else
-                            setNotice(
-                              "This job was saved before match details were recorded. Required skills: " +
-                                (j.skills.join(", ") || "none listed"),
-                            );
-                        })
-                      }
-                    >
-                      View saved match evidence
-                    </button>
-                    <button
-                      className="secondary"
-                      onClick={() =>
-                        action(async () => {
-                          await api("/saved-jobs/" + j.id, {
-                            method: "DELETE",
-                          });
-                          setSaved(saved.filter((x) => x.id !== j.id));
-                        })
-                      }
-                    >
-                      Remove from saved
-                    </button>
-                  </section>
-                ))
+                <SavedList
+                  jobs={saved}
+                  evidence={savedEvidence}
+                  open={open}
+                  action={action}
+                  remove={async (id) => {
+                    await api("/saved-jobs/" + id, { method: "DELETE" });
+                    setSaved(saved.filter((j) => j.id !== id));
+                  }}
+                />
               ) : (
                 <div className="empty">
                   <Bookmark size={36} />
-                  <h2>No saved opportunities yet.</h2>
+                  <h2>No saved jobs yet</h2>
                   <p>Save a result from discovery to keep it here.</p>
+                  <button
+                    className="primary"
+                    onClick={() => navigate("discover")}
+                  >
+                    Discover jobs
+                  </button>
                 </div>
               )}
             </>
           )}
           {view === "preferences" && (
             <>
-              <h1>Your preferences. Your memory.</h1>
+              <h1>Preferences &amp; Memory</h1>
               <p className="muted">
                 Only explicitly saved preferences influence future ranking.
               </p>
               <form
-                className="panel"
+                className="panel preferences-form"
                 onSubmit={(e) => {
                   e.preventDefault();
                   action(async () => {
@@ -869,18 +904,77 @@ export default function Home() {
                 }}
               >
                 <label>
-                  Role and technical interests (one per line)
+                  Roles, work type, locations and interests (one per line)
                   <textarea
                     rows={7}
                     value={preferences}
                     onChange={(e) => setPreferences(e.target.value)}
-                    placeholder="backend\nretrieval\nsearch engineering"
+                    placeholder={"Backend engineering\nRemote work\nBengaluru"}
                   />
                 </label>
+                <div className="suggestions">
+                  {[
+                    "Remote work",
+                    "Hybrid work",
+                    "Backend engineering",
+                    "Data analysis",
+                  ].map((value) => (
+                    <button
+                      key={value}
+                      type="button"
+                      aria-pressed={preferences.split("\n").includes(value)}
+                      onClick={() => {
+                        const lines = preferences.split("\n").filter(Boolean);
+                        setPreferences(
+                          (lines.includes(value)
+                            ? lines.filter((v) => v !== value)
+                            : [...lines, value]
+                          ).join("\n"),
+                        );
+                      }}
+                    >
+                      {value}
+                    </button>
+                  ))}
+                </div>
                 <button className="primary" disabled={busy}>
                   Save preferences
                 </button>
               </form>
+              <section className="panel">
+                <h2>AI provider privacy</h2>{" "}
+                <label>
+                  <span>
+                    <input
+                      type="checkbox"
+                      checked={user.provider_consent}
+                      onChange={(e) => {
+                        const allowed = e.target.checked;
+                        action(async () => {
+                          await api("/privacy/provider-consent", {
+                            method: "PUT",
+                            body: body({ allowed }),
+                          });
+                          setUser({ ...user, provider_consent: allowed });
+                        });
+                      }}
+                    />{" "}
+                    Allow the configured AI provider to process this chat,
+                    profile and job evidence.
+                  </span>
+                </label>
+                <h2>Conversation memory</h2>
+                <p>
+                  Return to Discover to review earlier searches or start a new
+                  conversation.
+                </p>
+                <button
+                  className="secondary"
+                  onClick={() => navigate("discover")}
+                >
+                  Open Discover
+                </button>
+              </section>
               <section className="panel">
                 <h2>Password recovery</h2>
                 <form
@@ -913,6 +1007,8 @@ export default function Home() {
                   </button>
                   <p>Generating a code invalidates your previous code.</p>
                 </form>
+              </section>
+              <section className="panel">
                 <h2>Delete your data</h2>
                 <p>
                   Removes your account, profile, sessions, feedback, and saved
@@ -945,41 +1041,19 @@ export default function Home() {
           )}
           {view === "analytics" && (
             <>
-              <p className="kicker">MEASURE, THEN IMPROVE</p>
-              <h1>Evaluation lab.</h1>
+              <h1>Evaluation Lab</h1>
               <p className="muted">
-                Actual stored runs. Synthetic relevance judgments are
-                diagnostic, not evidence of hiring effectiveness.
+                Test and compare search and recommendation strategies.
               </p>
               {evaluations.length ? (
-                evaluations.map((run) => (
-                  <section className="panel" key={run.id}>
-                    <h2>Run · {new Date(run.created_at).toLocaleString()}</h2>
-                    <EvidenceValue value={run.metadata} />
-                    <div className="metric-grid">
-                      {Object.entries(run.metrics).map(([name, value]) => (
-                        <div className="metric" key={name}>
-                          <p>{name.replaceAll("_", " ")}</p>
-                          <div>
-                            {typeof value === "number" ? (
-                              value.toFixed(3)
-                            ) : typeof value === "string" ? (
-                              value
-                            ) : (
-                              <EvidenceValue value={value} />
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </section>
-                ))
+                <EvaluationReport runs={evaluations} />
               ) : (
                 <div className="empty">
                   <ChartNoAxesCombined size={42} />
                   <h2>No evaluations have run yet.</h2>
                   <p>
-                    Evaluation reports appear here when published.
+                    Reports appear after a maintainer runs scripts/evaluate.py
+                    against the seeded database.
                     <br />
                     You can explore the job catalog in the meantime.
                   </p>

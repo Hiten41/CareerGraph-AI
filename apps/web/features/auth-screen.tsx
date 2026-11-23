@@ -1,13 +1,15 @@
-import { Network, ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { Waypoints, ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
 import { api, body } from "../lib/api";
 export function AuthScreen({
+  dark,
   register,
   setRegister,
   busy,
   error,
   authenticate,
 }: {
+  dark: boolean;
   register: boolean;
   setRegister: (v: boolean) => void;
   busy: boolean;
@@ -39,10 +41,10 @@ export function AuthScreen({
     }
   }
   return (
-    <main className="entry">
+    <main className={dark ? "entry dark" : "entry"}>
       <section className="entry-story">
         <header>
-          <Network aria-hidden="true" /> CareerGraph AI
+          <Waypoints aria-hidden="true" /> CareerGraph AI
         </header>
         <div className="entry-intro">
           <h1>
@@ -118,7 +120,13 @@ export function AuthScreen({
               <small>Use at least 12 characters for your password.</small>
             )}
             <button className="primary" disabled={busy || resetting}>
-              {busy || resetting ? "Please wait…" : reset ? "Reset password" : register ? "Create account" : "Sign in"}{" "}
+              {busy || resetting
+                ? "Please wait…"
+                : reset
+                  ? "Reset password"
+                  : register
+                    ? "Create account"
+                    : "Sign in"}{" "}
               <ArrowRight size={18} aria-hidden="true" />
             </button>
           </form>

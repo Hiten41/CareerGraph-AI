@@ -29,7 +29,6 @@ export function JobCard({
         <button
           className="icon-btn"
           aria-pressed={saved}
-          disabled={saved}
           aria-label={`${saved ? "Saved" : "Save"} ${job.title}`}
           onClick={onSave}
         >
@@ -76,7 +75,7 @@ export function JobCard({
           {job.synthetic ? "Fictional demo listing" : "Source listing"}
         </span>
         <button className="text-btn" onClick={onOpen}>
-          View match evidence
+          Explain match
         </button>
         <button
           className="icon-btn"
