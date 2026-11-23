@@ -12,7 +12,7 @@ test("keep my edits, search, shortlist and account access", async ({
   const button = (name: string) =>
     page.getByRole("button", { name, exact: true });
   const name = page.getByLabel("Name", { exact: true });
-  await page.goto(base);
+  await page.goto(base + "/?visit=" + randomUUID());
   await button("New here? Create an account").click();
   await page.getByLabel("Email", { exact: true }).fill(email);
   await page.getByLabel("Password", { exact: true }).fill(password);

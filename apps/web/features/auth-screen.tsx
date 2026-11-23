@@ -118,7 +118,7 @@ export function AuthScreen({
               <small>Use at least 12 characters for your password.</small>
             )}
             <button className="primary" disabled={busy || resetting}>
-              {busy ? "Please wait…" : register ? "Create account" : "Sign in"}{" "}
+              {busy || resetting ? "Please wait…" : reset ? "Reset password" : register ? "Create account" : "Sign in"}{" "}
               <ArrowRight size={18} aria-hidden="true" />
             </button>
           </form>
