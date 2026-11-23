@@ -1,4 +1,5 @@
 "use client";
+import { EvidenceValue } from "../components/evidence-value";
 import { AuthScreen } from "../features/auth-screen";
 import { MatchDialog } from "../features/match-dialog";
 import Link from "next/link";
@@ -395,7 +396,7 @@ export default function Home() {
                   </p>
                   <details>
                     <summary>View grounded tool evidence</summary>
-                    <pre>{JSON.stringify(chat.evidence, null, 2)}</pre>
+                    <EvidenceValue value={chat.evidence} />
                   </details>
                 </section>
               )}
@@ -744,18 +745,20 @@ export default function Home() {
                 evaluations.map((run) => (
                   <section className="panel" key={run.id}>
                     <h2>Run · {new Date(run.created_at).toLocaleString()}</h2>
-                    <pre>{JSON.stringify(run.metadata, null, 2)}</pre>
+                    <EvidenceValue value={run.metadata} />
                     <div className="metric-grid">
                       {Object.entries(run.metrics).map(([name, value]) => (
                         <div className="metric" key={name}>
                           <p>{name.replaceAll("_", " ")}</p>
-                          <strong>
-                            {typeof value === "number"
-                              ? value.toFixed(3)
-                              : typeof value === "string"
-                                ? value
-                                : JSON.stringify(value)}
-                          </strong>
+                          <div>
+                            {typeof value === "number" ? (
+                              value.toFixed(3)
+                            ) : typeof value === "string" ? (
+                              value
+                            ) : (
+                              <EvidenceValue value={value} />
+                            )}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -791,18 +794,20 @@ export default function Home() {
                       const f = e.target.files?.[0];
                       if (f)
                         action(async () => {
-                          const result = await api("/admin/ingestion", {
+                          await api("/admin/ingestion", {
                             method: "POST",
                             body: await f.text(),
                           });
-                          setNotice(JSON.stringify(result));
+                          setNotice(
+                            "Import processed. See the ingestion history for details.",
+                          );
                           setRuns(await api<unknown[]>("/admin/ingestion"));
                         });
                     }}
                   />
                 </label>
                 <h2>Ingestion history</h2>
-                <pre>{JSON.stringify(runs, null, 2)}</pre>
+                <EvidenceValue value={runs} />
               </section>
             </>
           )}

@@ -34,18 +34,27 @@ export function MatchDialog({
             <h3>Matched requirements</h3>
             <p>
               {selected.explanation.matched.join(", ") ||
-                "No verified skill matches"}
+                "Your profile has no listed skills in common with this role."}
             </p>
-            <h3>Missing requirements</h3>
+            <h3>Required skills missing from your profile</h3>
             <p>
               {selected.explanation.missing.join(", ") || "None identified"}
             </p>
             <h3>Unknown information</h3>
             <p>
-              {selected.unknown.join(", ") || "No unknown active constraints"}
+              {selected.unknown.join(", ") ||
+                "The listing covers all active search constraints."}
             </p>
-            <h3>Rank breakdown</h3>
-            <pre>{JSON.stringify(selected.explanation.features, null, 2)}</pre>
+            <h3>Why this role appeared</h3>
+            <p>
+              We ranked this role by how closely its title and description fit
+              your search.{" "}
+              {selected.explanation.features.personal_adjustment > 0
+                ? "Your profile, preferences or previous feedback raised its score."
+                : selected.explanation.features.personal_adjustment < 0
+                  ? "Your previous feedback lowered its score."
+                  : "Personalization did not change its score."}
+            </p>
             <p className="fine">
               {selected.explanation.score_label}. Last seen:{" "}
               {new Date(selected.job.last_seen_at).toLocaleString()}
