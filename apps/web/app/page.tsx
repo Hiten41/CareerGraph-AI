@@ -56,7 +56,11 @@ export default function Home() {
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState(""),
-    [dark, setDark] = useState(false);
+    [dark, setDark] = useState(
+      () =>
+        typeof window !== "undefined" &&
+        localStorage.getItem("careergraph-theme") === "dark",
+    );
   const [profile, setProfile] = useState<Profile>(emptyProfile),
     [query, setQuery] = useState(""),
     [results, setResults] = useState<Result[]>([]),
@@ -69,12 +73,55 @@ export default function Home() {
     [selected, setSelected] = useState<Result | null>(null),
     [strategy, setStrategy] = useState("personalized");
   const [hostedResume, setHostedResume] = useState(false);
+  const [recoveryCode, setRecoveryCode] = useState("");
+  const [baseline, setBaseline] = useState<Profile | null>(null);
+  const [turns, setTurns] = useState<{ question: string; answer: Chat }[]>([]);
+  const [directRequest, setDirectRequest] = useState<{
+    query: string;
+    strategy: string;
+  } | null>(null);
+  const dirty =
+    view === "profile" &&
+    baseline !== null &&
+    JSON.stringify(profile) !== JSON.stringify(baseline);
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [dirty]);
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     api<User>("/auth/me")
-      .then((u) => {
+      .then(async (u) => {
         setCsrf(u.csrf);
         setUser(u);
+        setSaved(await api<Job[]>("/saved-jobs"));
+        const id = sessionStorage.getItem("careergraph-session-" + u.id);
+        if (id) {
+          const messages = await api<
+            (
+              | { role: "user"; content: string }
+              | { role: "assistant"; content: Chat }
+            )[]
+          >("/chat/sessions/" + id + "/messages");
+          let question = "";
+          const restored = [];
+          for (const m of messages) {
+            if (m.role === "user") question = m.content;
+            else restored.push({ question, answer: m.content });
+          }
+          setTurns(restored);
+          setSession(id);
+          const last = restored.at(-1)?.answer;
+          if (last) {
+            setChat(last);
+            setResults(last.tools.includes("search_jobs") ? last.results : []);
+          }
+        }
       })
       .catch(() => {})
       .finally(() => setChecking(false));
@@ -92,11 +139,16 @@ export default function Home() {
     }
   }
   async function navigate(next: string) {
+    if (busy || (dirty && !window.confirm("Discard unsaved profile changes?")))
+      return;
+    if (next === "profile") setBaseline(null);
     setView(next);
     await action(async () => {
       if (next === "profile") {
         const p = await api<{ profile: Profile }>("/profile");
-        setProfile({ ...emptyProfile, ...p.profile });
+        const loaded = { ...emptyProfile, ...p.profile };
+        setProfile(loaded);
+        setBaseline(loaded);
       }
       if (next === "preferences")
         setPreferences(
@@ -112,7 +164,7 @@ export default function Home() {
   }
   async function authenticate(form: FormData) {
     await action(async () => {
-      const data = await api<{ csrf: string }>(
+      const data = await api<{ csrf: string; recovery_code?: string }>(
         register ? "/auth/register" : "/auth/login",
         {
           method: "POST",
@@ -124,10 +176,12 @@ export default function Home() {
       );
       setCsrf(data.csrf);
       setUser(await api<User>("/auth/me"));
+      setRecoveryCode(data.recovery_code || "");
+      setSaved(await api<Job[]>("/saved-jobs"));
     });
   }
-  async function discover(conversation: boolean) {
-    if (!query.trim()) return;
+  async function discover(conversation: boolean, searchText = query) {
+    if (busy || !searchText.trim()) return;
     setResults([]);
     setChat(null);
     await action(async () => {
@@ -139,10 +193,16 @@ export default function Home() {
         const response = await api<Chat>(`/chat/sessions/${id}/messages`, {
           method: "POST",
           body: body({
-            message: query,
+            message: searchText,
             allow_provider: user?.provider_consent === true,
           }),
         });
+        setDirectRequest(null);
+        sessionStorage.setItem("careergraph-session-" + user!.id, id);
+        setTurns((previous) => [
+          ...previous,
+          { question: searchText, answer: response },
+        ]);
         setChat(response);
         if (response.tools.includes("search_jobs"))
           setResults(response.results);
@@ -152,10 +212,11 @@ export default function Home() {
           (
             await api<{ results: Result[] }>("/jobs/search", {
               method: "POST",
-              body: body({ query, strategy }),
+              body: body({ query: searchText, strategy }),
             })
           ).results,
         );
+        setDirectRequest({ query: searchText, strategy });
         setChat(null);
       }
     });
@@ -202,7 +263,16 @@ export default function Home() {
             <br />
             Listings are fictional.
           </p>
-          <button className="nav-item" onClick={() => setDark(!dark)}>
+          <button
+            className="nav-item"
+            onClick={() => {
+              localStorage.setItem(
+                "careergraph-theme",
+                dark ? "light" : "dark",
+              );
+              setDark(!dark);
+            }}
+          >
             {dark ? <Sun size={18} /> : <Moon size={18} />}{" "}
             {dark ? "Light" : "Dark"} appearance
           </button>
@@ -210,8 +280,29 @@ export default function Home() {
             className="nav-item"
             onClick={() =>
               action(async () => {
+                if (
+                  dirty &&
+                  !window.confirm(
+                    "Discard unsaved profile changes and sign out?",
+                  )
+                )
+                  return;
                 await api("/auth/logout", { method: "POST" });
+                sessionStorage.removeItem("careergraph-session-" + user.id);
+                setBaseline(null);
+                setView("discover");
                 setUser(null);
+                setTurns([]);
+                setSelected(null);
+                setSaved([]);
+                setQuery("");
+                setPreferences("");
+                setProfile(emptyProfile);
+                setRecoveryCode("");
+                setRegister(false);
+                setDirectRequest(null);
+                setHostedResume(false);
+                setStrategy("personalized");
                 setSession("");
                 setResults([]);
                 setChat(null);
@@ -239,6 +330,19 @@ export default function Home() {
             <div role="alert" className="error">
               {error}
             </div>
+          )}
+          {recoveryCode && (
+            <section className="notice">
+              <h3>Save your one-time recovery code</h3>
+              <p>
+                Keep this code somewhere private. You can use it with your email
+                to reset your password.
+              </p>
+              <code style={{ overflowWrap: "anywhere" }}>{recoveryCode}</code>{" "}
+              <button onClick={() => setRecoveryCode("")}>
+                I have saved it
+              </button>
+            </section>
           )}
           {notice && (
             <div role="status" className="notice">
@@ -290,29 +394,32 @@ export default function Home() {
                     maxLength={1000}
                   />
                   <div className="search-actions">
-                    <label>
-                      Direct search strategy
-                      <select
-                        value={strategy}
-                        onChange={(e) => setStrategy(e.target.value)}
+                    <details>
+                      <summary>Advanced search</summary>
+                      <label>
+                        Direct search strategy
+                        <select
+                          value={strategy}
+                          onChange={(e) => setStrategy(e.target.value)}
+                        >
+                          <option value="personalized">
+                            Personalized hybrid
+                          </option>
+                          <option value="hybrid">Hybrid</option>
+                          <option value="keyword">Keyword</option>
+                          <option value="semantic">Semantic</option>
+                        </select>
+                      </label>
+                      <button
+                        type="button"
+                        className="secondary"
+                        disabled={busy || !query.trim()}
+                        onClick={() => discover(false)}
                       >
-                        <option value="personalized">
-                          Personalized hybrid
-                        </option>
-                        <option value="hybrid">Hybrid</option>
-                        <option value="keyword">Keyword</option>
-                        <option value="semantic">Semantic</option>
-                      </select>
-                    </label>
-                    <button
-                      type="button"
-                      className="secondary"
-                      disabled={busy || !query.trim()}
-                      onClick={() => discover(false)}
-                    >
-                      <Search size={16} />
-                      Direct search
-                    </button>
+                        <Search size={16} />
+                        Direct search
+                      </button>
+                    </details>
                     <button
                       className="primary"
                       disabled={busy || !query.trim()}
@@ -348,19 +455,54 @@ export default function Home() {
                     "AI/ML internships for 2028 graduates",
                     "Backend engineering internships",
                   ].map((q) => (
-                    <button key={q} onClick={() => setQuery("Find " + q)}>
+                    <button
+                      key={q}
+                      disabled={busy}
+                      onClick={() => {
+                        setQuery("Find " + q);
+                        void discover(true, "Find " + q);
+                      }}
+                    >
                       {q}
                     </button>
                   ))}
                 </div>
               </section>
+              {turns.slice(0, chat ? -1 : undefined).map((turn, index) => (
+                <details className="panel" key={index}>
+                  <summary>{turn.question}</summary>
+                  <p>
+                    {turn.answer.message.replaceAll(
+                      "(eligible)",
+                      "(meets search filters)",
+                    )}
+                  </p>
+                  <ul>
+                    {turn.answer.results.map((r) => (
+                      <li key={r.job.id}>
+                        <button onClick={() => open(r)}>
+                          {r.job.title} � {r.job.company}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
               {chat && (
                 <section className="agent-panel">
                   <div className="section-heading">
-                    <h3>{chat.mode}</h3>
+                    <h3>
+                      {chat.mode.startsWith("Deterministic")
+                        ? "Built-in search � no external AI"
+                        : "AI-assisted search"}
+                    </h3>
                     <button
                       className="text-btn"
                       onClick={() => {
+                        sessionStorage.removeItem(
+                          "careergraph-session-" + user.id,
+                        );
+                        setTurns([]);
                         setSession("");
                         setChat(null);
                         setResults([]);
@@ -370,7 +512,13 @@ export default function Home() {
                       New conversation
                     </button>
                   </div>
-                  <p>{chat.message}</p>
+                  <strong>{turns.at(-1)?.question}</strong>
+                  <p>
+                    {chat.message.replaceAll(
+                      "(eligible)",
+                      "(meets search filters)",
+                    )}
+                  </p>
                   {chat.pending_preference && (
                     <p>
                       Proposed: <strong>{chat.pending_preference}</strong>{" "}
@@ -395,7 +543,7 @@ export default function Home() {
                     Tools invoked: {chat.tools.join(" · ") || "None"}
                   </p>
                   <details>
-                    <summary>View grounded tool evidence</summary>
+                    <summary>See supporting details</summary>
                     <EvidenceValue value={chat.evidence} />
                   </details>
                 </section>
@@ -418,13 +566,22 @@ export default function Home() {
                     <JobCard
                       key={r.job.id}
                       result={r}
+                      saved={saved.some((j) => j.id === r.job.id)}
                       onOpen={() => open(r)}
                       onSave={() =>
                         action(async () => {
                           await api("/saved-jobs", {
                             method: "POST",
-                            body: body({ job_id: r.job.id }),
+                            body: body({
+                              job_id: r.job.id,
+                              session_id: directRequest ? null : session,
+                              search_request: directRequest,
+                            }),
                           });
+                          setSaved((previous) => [
+                            ...previous.filter((j) => j.id !== r.job.id),
+                            r.job,
+                          ]);
                           setNotice("Saved to your opportunities.");
                         })
                       }
@@ -463,7 +620,7 @@ export default function Home() {
               )}
             </>
           )}
-          {view === "profile" && (
+          {view === "profile" && baseline && (
             <>
               <p className="kicker">YOUR FOUNDATION</p>
               <h1>A profile you control.</h1>
@@ -471,7 +628,7 @@ export default function Home() {
                 Review extracted details before saving. Completeness reflects
                 filled fields, never employability.
               </p>
-              <section className="panel">
+              <fieldset disabled={busy} className="panel">
                 {user.provider_consent && (
                   <label>
                     <span>
@@ -523,6 +680,7 @@ export default function Home() {
                         method: "PUT",
                         body: body(profile),
                       });
+                      setBaseline(profile);
                       setNotice("Profile saved.");
                     });
                   }}
@@ -629,7 +787,7 @@ export default function Home() {
                     Confirm & save profile
                   </button>
                 </form>
-              </section>
+              </fieldset>
             </>
           )}
           {view === "saved" && (
@@ -645,6 +803,23 @@ export default function Home() {
                       {j.synthetic ? "Fictional demo" : "Imported source"}
                     </p>
                     <p>{j.description}</p>
+                    <button
+                      onClick={() =>
+                        action(async () => {
+                          const result = await api<Result | null>(
+                            "/saved-jobs/" + j.id + "/evidence",
+                          );
+                          if (result) open(result);
+                          else
+                            setNotice(
+                              "This job was saved before match details were recorded. Required skills: " +
+                                (j.skills.join(", ") || "none listed"),
+                            );
+                        })
+                      }
+                    >
+                      View saved match evidence
+                    </button>
                     <button
                       className="secondary"
                       onClick={() =>
@@ -707,6 +882,37 @@ export default function Home() {
                 </button>
               </form>
               <section className="panel">
+                <h2>Password recovery</h2>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const form = e.currentTarget;
+                    const password = new FormData(form).get("password");
+                    void action(async () => {
+                      const data = await api<{ code: string }>(
+                        "/auth/recovery-code",
+                        { method: "POST", body: body({ password }) },
+                      );
+                      setRecoveryCode(data.code);
+                      form.reset();
+                      window.scrollTo(0, 0);
+                    });
+                  }}
+                >
+                  <label>
+                    Current password
+                    <input
+                      type="password"
+                      name="password"
+                      autoComplete="current-password"
+                      required
+                    />
+                  </label>
+                  <button className="secondary" disabled={busy}>
+                    Generate replacement recovery code
+                  </button>
+                  <p>Generating a code invalidates your previous code.</p>
+                </form>
                 <h2>Delete your data</h2>
                 <p>
                   Removes your account, profile, sessions, feedback, and saved
@@ -722,6 +928,10 @@ export default function Home() {
                     )
                       action(async () => {
                         await api("/auth/me", { method: "DELETE" });
+                        sessionStorage.removeItem(
+                          "careergraph-session-" + user.id,
+                        );
+                        window.location.reload();
                         setUser(null);
                         setResults([]);
                         setChat(null);
@@ -769,10 +979,13 @@ export default function Home() {
                   <ChartNoAxesCombined size={42} />
                   <h2>No evaluations have run yet.</h2>
                   <p>
-                    Run the evaluation script against the seeded database.
+                    Evaluation reports appear here when published.
                     <br />
-                    Metrics appear here only after a real run completes.
+                    You can explore the job catalog in the meantime.
                   </p>
+                  <button onClick={() => navigate("discover")}>
+                    Explore jobs
+                  </button>
                 </div>
               )}
             </>

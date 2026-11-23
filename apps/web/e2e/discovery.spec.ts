@@ -15,6 +15,7 @@ test("register, discover, refine, inspect, save and visit evaluations", async ({
   await page
     .getByRole("button", { name: "Create account", exact: true })
     .click();
+  await page.getByRole("button", { name: "I have saved it" }).click();
   await page.getByRole("button", { name: "Your profile", exact: true }).click();
   await page.getByLabel("Name", { exact: true }).fill("Fictional candidate");
   await page.getByLabel("Skills (comma separated)").fill("Python, SQL");
@@ -58,6 +59,7 @@ test("register, discover, refine, inspect, save and visit evaluations", async ({
       body: JSON.stringify({ detail: "Search temporarily unavailable" }),
     }),
   );
+  await page.getByText("Advanced search", { exact: true }).click();
   await query.fill("another role");
   await page.getByRole("button", { name: "Direct search" }).click();
   await expect(page.locator("main").getByRole("alert")).toContainText(

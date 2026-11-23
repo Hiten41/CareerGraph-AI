@@ -68,7 +68,7 @@ def live():
 def ready():
     try:
         with engine.connect() as db:
-            db.execute(text("SELECT provider_consent FROM users LIMIT 0"))
+            db.execute(text("SELECT provider_consent,recovery_hash FROM users LIMIT 0"))
         return {"status": "ready"}
     except Exception:
         return JSONResponse({"status": "database unavailable or not migrated"}, 503)

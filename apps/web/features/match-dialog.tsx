@@ -10,6 +10,7 @@ export function MatchDialog({
 }) {
   return (
     <dialog
+      aria-labelledby="match-title"
       ref={dialog}
       onClick={(e) => {
         if (e.target === dialog.current) dialog.current.close();
@@ -26,9 +27,12 @@ export function MatchDialog({
         {selected && (
           <>
             <p className="kicker">MATCH EVIDENCE</p>
-            <h2>{selected.job.title}</h2>
+            <h2 id="match-title">{selected.job.title}</h2>
             <p>
-              {selected.job.company} · {selected.eligibility}
+              {selected.job.company} ·{" "}
+              {selected.eligibility === "eligible"
+                ? "Meets search filters"
+                : "Some filters unverified"}
             </p>
             <p>{selected.job.description}</p>
             <h3>Matched requirements</h3>
@@ -45,16 +49,22 @@ export function MatchDialog({
               {selected.unknown.join(", ") ||
                 "The listing covers all active search constraints."}
             </p>
-            <h3>Why this role appeared</h3>
-            <p>
-              We ranked this role by how closely its title and description fit
-              your search.{" "}
-              {selected.explanation.features.personal_adjustment > 0
-                ? "Your profile, preferences or previous feedback raised its score."
-                : selected.explanation.features.personal_adjustment < 0
-                  ? "Your previous feedback lowered its score."
-                  : "Personalization did not change its score."}
-            </p>
+            {selected.eligibility === "historical_unknown" ? (
+              <p>The original search was not recorded for this bookmark.</p>
+            ) : (
+              <>
+                <h3>Why this role appeared</h3>
+                <p>
+                  We ranked this role by how closely its title and description
+                  fit your search.{" "}
+                  {selected.explanation.features.personal_adjustment > 0
+                    ? "Your profile, preferences or previous feedback raised its score."
+                    : selected.explanation.features.personal_adjustment < 0
+                      ? "Your previous feedback lowered its score."
+                      : "Personalization did not change its score."}
+                </p>
+              </>
+            )}
             <p className="fine">
               {selected.explanation.score_label}. Last seen:{" "}
               {new Date(selected.job.last_seen_at).toLocaleString()}

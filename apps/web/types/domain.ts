@@ -31,7 +31,7 @@ export type Result = {
   eligibility: string;
   unknown: string[];
   explanation: {
-    score: number;
+    score: number | null;
     matched: string[];
     missing: string[];
     missing_optional: string[];

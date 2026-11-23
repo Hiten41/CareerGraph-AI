@@ -2,11 +2,13 @@ import { Bookmark, MapPin, CircleCheck, ThumbsDown } from "lucide-react";
 import type { Result } from "../types/domain";
 export function JobCard({
   result,
+  saved = false,
   onSave,
   onDismiss,
   onOpen,
 }: {
   result: Result;
+  saved?: boolean;
   onSave: () => void;
   onDismiss: () => void;
   onOpen: () => void;
@@ -26,10 +28,12 @@ export function JobCard({
         </div>
         <button
           className="icon-btn"
-          aria-label={`Save ${job.title}`}
+          aria-pressed={saved}
+          disabled={saved}
+          aria-label={`${saved ? "Saved" : "Save"} ${job.title}`}
           onClick={onSave}
         >
-          <Bookmark size={19} />
+          <Bookmark size={19} fill={saved ? "currentColor" : "none"} />
         </button>
       </div>
       <div className="job-meta">
@@ -47,7 +51,11 @@ export function JobCard({
       </p>
       <div className="match">
         <CircleCheck size={16} />
-        <strong>{result.eligibility}</strong>
+        <strong>
+          {result.eligibility === "eligible"
+            ? "Meets search filters"
+            : "Some filters unverified"}
+        </strong>
         <span>· {explanation.matched.length} matching skills</span>
       </div>
       <div className="tags">

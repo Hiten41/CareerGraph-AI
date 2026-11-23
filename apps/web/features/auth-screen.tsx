@@ -1,4 +1,6 @@
 import { Network, ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { useState } from "react";
+import { api, body } from "../lib/api";
 export function AuthScreen({
   register,
   setRegister,
@@ -12,6 +14,30 @@ export function AuthScreen({
   error: string;
   authenticate: (f: FormData) => Promise<void>;
 }) {
+  const [reset, setReset] = useState(false),
+    [status, setStatus] = useState(""),
+    [resetting, setResetting] = useState(false);
+  async function recover(form: FormData) {
+    setResetting(true);
+    try {
+      await api("/auth/reset-password", {
+        method: "POST",
+        body: body({
+          email: form.get("email"),
+          password: form.get("password"),
+          code: String(form.get("code")).trim(),
+        }),
+      });
+      setReset(false);
+      setStatus(
+        "Password updated. Sign in with your new password. Generate a new recovery code in Preferences & memory.",
+      );
+    } catch (e) {
+      setStatus(e instanceof Error ? e.message : "Unable to reset password.");
+    } finally {
+      setResetting(false);
+    }
+  }
   return (
     <main className="entry">
       <section className="entry-story">
@@ -41,13 +67,24 @@ export function AuthScreen({
       </section>
       <section className="entry-account">
         <div className="entry-form">
-          <h2>{register ? "Create your account" : "Welcome back"}</h2>
+          <h2>
+            {reset
+              ? "Reset your password"
+              : register
+                ? "Create your account"
+                : "Welcome back"}
+          </h2>
           <p>
-            {register
-              ? "Create a profile to start exploring roles."
-              : "Sign in to your CareerGraph workspace."}
+            {reset
+              ? "Enter the recovery code saved from your account."
+              : register
+                ? "Create a profile to start exploring roles."
+                : "Sign in to your CareerGraph workspace."}
           </p>
-          <form action={authenticate}>
+          <form
+            key={reset ? "reset" : "auth"}
+            action={reset ? recover : authenticate}
+          >
             <label>
               Email
               <input
@@ -58,35 +95,63 @@ export function AuthScreen({
                 required
               />
             </label>
+            {reset && (
+              <label>
+                Recovery code
+                <input name="code" required autoComplete="off" />
+              </label>
+            )}
             <label>
-              Password
+              {reset ? "New password" : "Password"}
               <input
                 name="password"
                 type="password"
                 minLength={12}
                 maxLength={128}
-                autoComplete={register ? "new-password" : "current-password"}
+                autoComplete={
+                  register || reset ? "new-password" : "current-password"
+                }
                 required
               />
             </label>
-            {register && (
+            {(register || reset) && (
               <small>Use at least 12 characters for your password.</small>
             )}
-            <button className="primary" disabled={busy}>
+            <button className="primary" disabled={busy || resetting}>
               {busy ? "Please wait…" : register ? "Create account" : "Sign in"}{" "}
               <ArrowRight size={18} aria-hidden="true" />
             </button>
           </form>
-          {error && (
+          {status && <p role="status">{status}</p>}
+          {!reset && error && (
             <p role="alert" className="error">
               {error}
             </p>
           )}
-          <button className="text-btn" onClick={() => setRegister(!register)}>
-            {register
-              ? "Already have an account? Sign in"
-              : "New here? Create an account"}
-          </button>
+          {!register && (
+            <button
+              className="text-btn"
+              onClick={() => {
+                setReset(!reset);
+                setStatus("");
+              }}
+            >
+              {reset ? "Back to sign in" : "Forgot password?"}
+            </button>
+          )}
+          {!reset && (
+            <button
+              className="text-btn"
+              onClick={() => {
+                setStatus("");
+                setRegister(!register);
+              }}
+            >
+              {register
+                ? "Already have an account? Sign in"
+                : "New here? Create an account"}
+            </button>
+          )}
           <p className="fine">
             Resume files are discarded after extraction. Your profile is saved
             only when you confirm.

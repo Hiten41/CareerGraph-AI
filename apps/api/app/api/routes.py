@@ -27,6 +27,14 @@ class Credentials(Strict):
     password: str = Field(min_length=12, max_length=128)
 
 
+class ResetPassword(Credentials):
+    code: str = Field(min_length=20, max_length=128)
+
+
+class VerifyPassword(Strict):
+    password: str = Field(min_length=12, max_length=128)
+
+
 class Message(Strict):
     allow_provider: bool = False
     message: str = Field(min_length=1, max_length=2000)
@@ -43,6 +51,8 @@ class Feedback(Strict):
 
 class Saved(Strict):
     job_id: UUID
+    session_id: UUID | None = None
+    search_request: Search | None = None
 
 
 class Comparison(Strict):
@@ -80,7 +90,39 @@ def register(body: Credentials, response: Response, db=Depends(database)):
     except IntegrityError:
         raise HTTPException(409, "Email already registered") from None
     user_data.save_profile(db, uid, Profile().model_dump())
-    return login_cookie(db, response, uid)
+    code = secrets.token_urlsafe(32)
+    db.execute(text("UPDATE users SET recovery_hash=:h WHERE id=:u"), {"h": digest(code), "u": uid})
+    return {**login_cookie(db, response, uid), "recovery_code": code}
+
+
+@router.post("/auth/recovery-code")
+def recovery_code(body: VerifyPassword, user=Depends(current_user), db=Depends(database)):
+    password_hash = db.execute(
+        text("SELECT password_hash FROM users WHERE id=:u FOR UPDATE"), {"u": user["id"]}
+    ).scalar_one()
+    try:
+        hasher.verify(password_hash, body.password)
+    except VerificationError:
+        raise HTTPException(403, "Password incorrect") from None
+    code = secrets.token_urlsafe(32)
+    db.execute(text("UPDATE users SET recovery_hash=:h WHERE id=:u"), {"h": digest(code), "u": user["id"]})
+    return {"code": code}
+
+
+@router.post("/auth/reset-password")
+def reset_password(body: ResetPassword, db=Depends(database)):
+    uid = db.execute(
+        text("SELECT id FROM users WHERE email=:e AND recovery_hash=:h FOR UPDATE"),
+        {"e": body.email.lower(), "h": digest(body.code)},
+    ).scalar_one_or_none()
+    if uid is None:
+        raise HTTPException(400, "The email and recovery code do not match.")
+    db.execute(
+        text("UPDATE users SET password_hash=:p, recovery_hash=NULL WHERE id=:u"),
+        {"p": hasher.hash(body.password), "u": uid},
+    )
+    db.execute(text("DELETE FROM auth_sessions WHERE user_id=:u"), {"u": uid})
+    return {"ok": True}
 
 
 @router.post("/auth/login")
@@ -231,13 +273,63 @@ def saved(user=Depends(current_user), db=Depends(database)):
     ]
 
 
+@router.get("/saved-jobs/{identifier}/evidence")
+def saved_evidence(identifier: UUID, user=Depends(current_user), db=Depends(database)):
+    row = db.execute(
+        text("SELECT evidence FROM saved_jobs WHERE user_id=:u AND job_id=:j"),
+        {"u": user["id"], "j": identifier},
+    ).first()
+    if not row:
+        raise HTTPException(404, "Saved job not found")
+    if row[0] is not None:
+        return row[0]
+    # Older bookmarks predate stored search evidence. Only compare known skills.
+    job = user_data.job(db, identifier)
+    profile = user_data.profile(db, user["id"])
+    skills = {skill.casefold() for skill in profile.get("skills", [])}
+    required = {skill.casefold() for skill in job["skills"]}
+    return {
+        "job": job,
+        "eligibility": "historical_unknown",
+        "unknown": ["Original search filters"],
+        "explanation": {
+            "score": None,
+            "matched": sorted(required & skills),
+            "missing": sorted(required - skills),
+            "missing_optional": [],
+            "features": {},
+            "score_label": "Skills compared with your current profile",
+        },
+    }
+
+
 @router.post("/saved-jobs")
 def save(body: Saved, user=Depends(current_user), db=Depends(database)):
     if not user_data.job(db, body.job_id):
         raise HTTPException(404, "Job not found")
+    evidence = None
+    if body.search_request:
+        results = search_jobs(body.search_request, user, db)["results"]
+        evidence = next((r for r in results if str(r["job"]["id"]) == str(body.job_id)), None)
+    elif body.session_id:
+        owned_session(db, body.session_id, user["id"])
+        evidence = db.execute(
+            text("""
+            SELECT item FROM search_messages m
+            CROSS JOIN LATERAL jsonb_array_elements(m.content->'results') item
+            WHERE m.session_id=:s AND m.role='assistant' AND item->'job'->>'id'=:j
+            ORDER BY m.created_at DESC LIMIT 1
+        """),
+            {"s": body.session_id, "j": str(body.job_id)},
+        ).scalar_one_or_none()
     db.execute(
-        text("INSERT INTO saved_jobs(user_id,job_id) VALUES(:u,:j) ON CONFLICT DO NOTHING"),
-        {"u": user["id"], "j": body.job_id},
+        text("""INSERT INTO saved_jobs(user_id,job_id,evidence) VALUES(:u,:j,CAST(:e AS jsonb))
+        ON CONFLICT (user_id,job_id) DO UPDATE SET evidence=COALESCE(EXCLUDED.evidence,saved_jobs.evidence)"""),
+        {
+            "u": user["id"],
+            "j": body.job_id,
+            "e": json.dumps(jsonable_encoder(evidence)) if evidence else None,
+        },
     )
     return {"saved": True}
 
@@ -288,7 +380,7 @@ def messages(identifier: UUID, user=Depends(current_user), db=Depends(database))
     return list(
         db.execute(
             text(
-                "SELECT role,content,created_at FROM search_messages WHERE session_id=:i ORDER BY created_at,id"
+                "SELECT role,content,created_at FROM search_messages WHERE session_id=:i ORDER BY created_at, CASE WHEN role='user' THEN 0 ELSE 1 END,id"
             ),
             {"i": identifier},
         ).mappings()
